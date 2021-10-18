@@ -3,8 +3,16 @@ package org.pickles.cvdesigner.controllers;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import org.pickles.cvdesigner.MainWindow;
+import org.pickles.cvdesigner.enums.WindowSizes;
+
+import java.io.IOException;
+
 
 public class MainWindowController {
     @FXML
@@ -48,6 +56,23 @@ public class MainWindowController {
         alert.setHeaderText("About us");
         alert.setContentText("© 5G-Pickles\nSubscribe to Linus Tech Tips!");
         alert.showAndWait();
+    }
+
+    public void openDesignerWebView(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("webViewWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),
+                WindowSizes.WEB_VIEW_WIDTH.value,
+                WindowSizes.WEB_VIEW_HEIGHT.value);
+
+        //TODO: figure out how to apply style from .css file; the method below does't work; <link...> in html doesn't work either
+        //scene.getStylesheets().add("/org/pickles/cvdesigner/webview/style.css");
+
+        Stage webViewWindow = new Stage();
+        webViewWindow.setTitle("Designer Webview");
+        webViewWindow.setScene(scene);
+        webViewWindow.show();
+
+        //TODO: make sure the new window opens once, so far a new window is being created each time  the button is pressed
     }
 }
 
