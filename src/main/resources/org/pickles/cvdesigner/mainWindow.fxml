@@ -32,7 +32,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
 <?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -43,8 +42,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.pickles.cvdesigner.controllers.MainWindowController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.MainWindowController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -80,7 +78,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About CVDesigner" onAction="#openAboutAppDialogue"/>
+            <MenuItem mnemonicParsing="false" onAction="#openAboutAppDialogue" text="About CVDesigner" />
           </items>
         </Menu>
       </menus>
@@ -88,11 +86,10 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <Label id="emailLabel" fx:id="emailLabel" layoutX="14.0" layoutY="14.0" text="e-mail:" />
-            <TextField id="emailTextField" fx:id="emailTextField" floatText="e.mail@domain.com" layoutX="14.0"
-                       layoutY="32.0" onKeyReleased="#verifyEmailFromEmailTextField" />
+            <TextField id="emailTextField" fx:id="emailTextField" floatText="e.mail@domain.com" layoutX="14.0" layoutY="32.0" onKeyReleased="#verifyEmailFromEmailTextField" />
             <Label fx:id="telNoLabel" layoutX="14.0" layoutY="79.0" text="tel. no.:" />
-            <TextField id="telNoTextField" fx:id="telNoTextField" floatText="+48 123 456 789" layoutX="14.0"
-                       layoutY="97.0" onKeyReleased="#verifyTelNoFromTelNoTextField" />
+            <TextField id="telNoTextField" fx:id="telNoTextField" floatText="+48 123 456 789" layoutX="14.0" layoutY="97.0" onKeyReleased="#verifyTelNoFromTelNoTextField" />
+            <Button layoutX="26.0" layoutY="159.0" mnemonicParsing="false" text="Open Webview" onAction="#openDesignerWebView" />
          </children>
     </AnchorPane>
   </children>
