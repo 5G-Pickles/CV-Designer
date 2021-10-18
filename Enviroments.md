@@ -4,7 +4,7 @@
     Used FX frameworks<br>
     <img src="doopa.png" alt="used JavaFX frameworks">
   </li>
-  <li><a href"https://search.maven.org/">Maven.org dependencies repository search</a></li>
+  <li><a href="https://search.maven.org/">Maven.org dependencies repository search</a></li>
   <li><a href="https://www.figma.com/">Figma</a></li>
   <ul>
     <li><a href="https://help.figma.com/hc/en-us/articles/360040328653-Use-shortcuts-and-quick-actions">Shortcuts Figma</a></li>
