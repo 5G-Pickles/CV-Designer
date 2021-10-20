@@ -5,12 +5,14 @@ An app that will make creating CV's easier
 
 CV Maker project is a colaborative project which will be developed by the "Pickles fellowship":
 <ul>
-  <li><a href="https://github.com/bkaryna">Karyna Babenko</a> - designer part of the application: HTML, CSS, JS</li>
+  <li><a href="https://github.com/bkaryna">Karyna Babenko</a> - main Java App: Java, JavaFX, HTML, CSS, JS (maybe SQL)</li>
   <li><a href="https://github.com/Vyvr">Maciej Luciński</a> - frontend design (UI + UX), templates design, graphics design: HTML, CSS, JS, (graphical software of choice)</li>
-  <li><a href="https://github.com/Szymonexis">Szymon Kaszuba-Gałka</a> - gitMaster, main Java App: Java, JavaFX, HTML, CSS, JS (maybe SQL)</li>
+  <li><a href="https://github.com/Szymonexis">Szymon Kaszuba-Gałka</a> - gitMaster, designer part of the application: HTML, CSS, JS, JavaFX, Java</li>
 </ul>
 
 Application will be developed with Java, HTML, CSS & JavaScript. JavaFX will be used for desktop app developement and Google Services and maybe Google Realtime Database (Firebase) or an SQL Databse will be put in place as well.
+
+More info on Feature can be found in <a href="../Conception.md">Conception.md</a>
 
 ## Features
 <ol>
