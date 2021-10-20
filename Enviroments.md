@@ -2,7 +2,7 @@
 <ol>
   <li>
     Used FX frameworks<br>
-    <img src="doopa.png" alt="used JavaFX frameworks">
+    <img src="usedFXFrameworks.png" alt="used JavaFX frameworks">
   </li>
   <li><a href="https://search.maven.org/">Maven.org dependencies repository search</a></li>
   <li><a href="https://www.figma.com/">Figma</a></li>
