@@ -1,5 +1,4 @@
 # CV-Designer
-# NIGGA
 An app that will make creating CV's easier
 
 ## Overview
