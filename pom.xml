@@ -133,7 +133,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.pickles.cvdesigner/org.pickles.cvdesigner.HelloApplication</mainClass>
+                            <mainClass>org.pickles.cvdesigner/org.pickles.cvdesigner.MainWindow</mainClass>
                         </configuration>
                     </execution>
                 </executions>

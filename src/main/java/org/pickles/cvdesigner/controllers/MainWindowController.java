@@ -15,6 +15,12 @@ import java.io.IOException;
 
 
 public class MainWindowController {
+    public Stage webViewStage;
+
+    public void setWebViewStage(Stage stage) {
+        webViewStage = stage;
+    }
+
     @FXML
     private Label telNoLabel;
 
@@ -59,20 +65,23 @@ public class MainWindowController {
     }
 
     public void openDesignerWebView(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("webViewWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),
-                WindowSizes.WEB_VIEW_WIDTH.value,
-                WindowSizes.WEB_VIEW_HEIGHT.value);
+        if (webViewStage == null || !webViewStage.isShowing()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("webViewWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),
+                    WindowSizes.WEB_VIEW_WIDTH.value,
+                    WindowSizes.WEB_VIEW_HEIGHT.value);
 
-        //TODO: figure out how to apply style from .css file; the method below does't work; <link...> in html doesn't work either
-        //scene.getStylesheets().add("/org/pickles/cvdesigner/webview/style.css");
+            //TODO: figure out how to apply style from .css file; the method below does't work; <link...> in html doesn't work either
+            //scene.getStylesheets().add("/org/pickles/cvdesigner/webview/style.css");
+            setWebViewStage(new Stage());
+            webViewStage.setTitle("Designer Webview");
+            webViewStage.setScene(scene);
+            webViewStage.show();
+        } else {
+            webViewStage.toFront();
+        }
 
-        Stage webViewWindow = new Stage();
-        webViewWindow.setTitle("Designer Webview");
-        webViewWindow.setScene(scene);
-        webViewWindow.show();
-
-        //TODO: make sure the new window opens once, so far a new window is being created each time  the button is pressed
+        //TODO: [i guess it's done] make sure the new window opens once, so far a new window is being created each time  the button is pressed
     }
 }
 
