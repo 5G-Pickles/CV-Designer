@@ -1,7 +1,7 @@
-## First window
+## First window - "Hello"
 Consists of the logo of the app and a <b>Start</b> button - in the futuer might also consist of the <b>Login</b> button and <b>Register</b> button.
 
-## Second window
+## Second window - "Basic data"
 Consists of <b>basic data</b> inputs:
 <ul>
 	<li>Name input text box - with not-needed UTF-8 characters removal (only alphabet accepted)</li>
@@ -14,7 +14,7 @@ Consists of <b>basic data</b> inputs:
 	<li><b>Next</b> button - only works when all data is correct and moves user to the next window</li>
 </ul>
 
-## Third window
+## Third window - "Basic data"
 Consits of <b>basic data</b> inputs - all of the below data is parsed and showed within MapView upon clicking the <b>Confirm</b> button:
 <ul>
 	<li>Country - defaults to Poland - at first only option, in the future might be changed to support more countries</li>
