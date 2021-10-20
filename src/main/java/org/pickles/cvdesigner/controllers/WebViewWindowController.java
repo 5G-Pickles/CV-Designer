@@ -5,6 +5,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class WebViewWindowController {
     @FXML
@@ -14,6 +15,6 @@ public class WebViewWindowController {
     private void initialize() {
         WebEngine engine = webView.getEngine();
         URL url = this.getClass().getResource("/org/pickles/cvdesigner/webview/designer.html");
-        engine.load(url.toString());
+        engine.load(Objects.requireNonNull(url).toString());
     }
 }

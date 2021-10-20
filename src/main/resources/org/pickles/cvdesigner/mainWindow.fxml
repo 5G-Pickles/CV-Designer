@@ -87,9 +87,11 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <Label id="emailLabel" fx:id="emailLabel" layoutX="14.0" layoutY="14.0" text="e-mail:" />
-            <TextField id="emailTextField" fx:id="emailTextField" floatText="e.mail@domain.com" layoutX="14.0" layoutY="32.0" onKeyReleased="#verifyEmailFromEmailTextField" />
+            <TextField id="emailTextField" fx:id="emailTextField" floatText="e.mail@domain.com" layoutX="14.0"
+                       layoutY="32.0" onKeyReleased="#verifyEmailFromEmailTextField" />
             <Label fx:id="telNoLabel" layoutX="14.0" layoutY="79.0" text="tel. no.:" />
-            <TextField id="telNoTextField" fx:id="telNoTextField" floatText="+48 123 456 789" layoutX="14.0" layoutY="97.0" onKeyReleased="#verifyTelNoFromTelNoTextField" />
+            <TextField id="telNoTextField" fx:id="telNoTextField" floatText="+48 123 456 789" layoutX="14.0"
+                       layoutY="97.0" onKeyReleased="#verifyTelNoFromTelNoTextField" />
             <Button layoutX="26.0" layoutY="159.0" mnemonicParsing="false" text="Open Webview" onAction="#openDesignerWebView" />
          </children>
     </AnchorPane>
