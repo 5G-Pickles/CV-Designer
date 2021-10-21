@@ -66,7 +66,7 @@ public class MainWindowController {
 
     public void openDesignerWebView(ActionEvent actionEvent) throws IOException {
         if (webViewStage == null || !webViewStage.isShowing()) {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("webViewWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("fxml/webViewWindow.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),
                     WindowSizes.WEB_VIEW_WIDTH.value,
                     WindowSizes.WEB_VIEW_HEIGHT.value);
