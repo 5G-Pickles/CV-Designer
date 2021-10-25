@@ -1,6 +1,10 @@
 # CV Designer
 An app that will make creating CV's easier
 
+## Wiki
+
+<a href="https://github.com/5G-Pickles/CV-Designer/wiki">Wiki home</a>
+
 ## Overview
 
 CV Maker project is a colaborative project which will be developed by the "Pickles fellowship":
