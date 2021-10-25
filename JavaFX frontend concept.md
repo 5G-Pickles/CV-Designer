@@ -1,4 +1,4 @@
-# Frontend concept
+# JavaFX frontend concept
 This file contains the overall written scheme for the JavaFX part of the application
 
 ## First scene - "Hello"
