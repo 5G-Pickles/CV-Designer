@@ -123,7 +123,10 @@ Consists of the <b>other data</b> input - this window is a very basic text edito
 	<li>ordered list</li>
 </ul>
 
-## Nineth scene - "Designer"
+## Nineth scene - "Templates"
+Consists of miniature webview coponents or static images - previews for different templates accessible for the user. Previews are arranged in 3xN grid within a scrollView.
+
+## Tenth scene - "Designer"
 Consists of a webView component which launches the <b>Designer</b> application. TBD
 
 
