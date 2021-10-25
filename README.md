@@ -12,7 +12,8 @@ CV Maker project is a colaborative project which will be developed by the "Pickl
 
 Application will be developed with Java, HTML, CSS & JavaScript. JavaFX will be used for desktop app developement and Google Services and maybe Google Realtime Database (Firebase) or an SQL Databse will be put in place as well.
 
-More info on <b>Features</b> can be found in <a href="./Frontend concept.md">Frontend concept.md</a>
+More info on <b>Features</b> can be found in <a href="./Frontend concept.md">Frontend concept.md</a><br>
+Frontend design project can be found on <a href="https://www.figma.com/file/rGEE2PB2GkbRcMxRHoM9ZI/CV-Designer?node-id=0%3A1">Figma</a>
 
 ## Features
 
