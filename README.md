@@ -1,4 +1,4 @@
-# CV-Designer
+# CV Designer
 An app that will make creating CV's easier
 
 ## Overview
@@ -12,9 +12,10 @@ CV Maker project is a colaborative project which will be developed by the "Pickl
 
 Application will be developed with Java, HTML, CSS & JavaScript. JavaFX will be used for desktop app developement and Google Services and maybe Google Realtime Database (Firebase) or an SQL Databse will be put in place as well.
 
-More info on <b>Features</b> can be found in <a href="./Frontend conception.md">Frontend conception.md</a>
+More info on <b>Features</b> can be found in <a href="./Frontend concept.md">Frontend conception.md</a>
 
 ## Features
+
 <ol>
   <li>Caches all sensitive data like names, surnames, date of birth, tel. no., education, job experiance etc.</li>
   <li>Provides desktop application which contains a JS-written <b>Designer</b> app within webview which:</li>
