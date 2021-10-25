@@ -35,7 +35,7 @@ More info on <b>Features</b> can be found in <a href="./Frontend concept.md">Fro
     </ul>
     <li>Designer will also allow user to insert pictures, set backgrounds and the style of the CV</li>
     <li>Components will be pre-filled and we plan on creating some ready to go designs (presets)</li>
-    <li>Panels will be layed out on a static grid (A4 standard paper) - first app design considers 32x16 grid</li>
+    <li>Panels will be layed out on a static grid (A4 standard paper) - first app design considers 21x30 grid</li>
   </ol>
   <li>Provides user with an option to save his/hers created CV within a PDF format in a local path within the system (or within a database if this part of the project comes to be)</li>
   <li>Along side the developement of this application a ne proprietary format will be developed (based on a xml-like structure) which will be used within the designer application - this format will not leave the application itself as all CV's will be formatted upon "printing" or "finalizing" the project to a PDF format</li>
