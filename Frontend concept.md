@@ -127,32 +127,4 @@ Consists of the <b>other data</b> input - this window is a very basic text edito
 Consists of miniature webview coponents or static images - previews for different templates accessible for the user. Previews are arranged in 3xN grid within a scrollView.
 
 ## Tenth scene - "Designer"
-Consists of a webView component which launches the <b>Designer</b> application. TBD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Consists of a webView component which launches the <a href="./Designer frontend concept.md"><b>Designer</b></a> application.
