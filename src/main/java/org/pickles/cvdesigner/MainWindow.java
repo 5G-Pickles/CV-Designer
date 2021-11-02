@@ -12,7 +12,7 @@ import org.pickles.cvdesigner.enums.WindowSizes;
 public class MainWindow extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("fxml/mainWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("fxml/mainScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),
                 WindowSizes.MAIN_WINDOW_WIDTH.value,
                 WindowSizes.MAIN_WINDOW_HEIGHT.value);
