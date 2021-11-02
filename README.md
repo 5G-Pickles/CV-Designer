@@ -19,6 +19,9 @@ Application will be developed with Java, HTML, CSS & JavaScript. JavaFX will be 
 More info on <b>Features</b> can be found in <a href="https://github.com/5G-Pickles/CV-Designer/wiki/JavaFX-frontend-concept">JavaFX frontend concept</a> and <a href="https://github.com/5G-Pickles/CV-Designer/wiki/Designer-frontend-concept">Designer frontend concept</a>
 Frontend design project can be found on <a href="https://www.figma.com/file/rGEE2PB2GkbRcMxRHoM9ZI/CV-Designer?node-id=0%3A1">Figma</a>
 
+
+
+
 ## Features
 
 <ol>
