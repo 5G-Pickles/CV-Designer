@@ -81,7 +81,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
       <children>
             <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
             <Button fx:id="nextButton" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNext" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
