@@ -7,15 +7,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import org.pickles.cvdesigner.enums.WindowSizes;
+import org.pickles.cvdesigner.enums.SceneSizes;
 
-public class MainWindow extends Application {
+public class Main extends Application {
+
+    public static Stage classStage;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("fxml/mainScene.fxml"));
+        classStage = stage;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/mainScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),
-                WindowSizes.MAIN_WINDOW_WIDTH.value,
-                WindowSizes.MAIN_WINDOW_HEIGHT.value);
+                SceneSizes.MAIN_WIDTH.value,
+                SceneSizes.MAIN_HEIGHT.value);
         stage.setTitle("CV-Designer");
         stage.setScene(scene);
         stage.show();
