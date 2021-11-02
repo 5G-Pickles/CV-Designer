@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.pickles.cvdesigner.controllers.MainWindowController">
+      fx:controller="org.pickles.cvdesigner.controllers.MainSceneController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>

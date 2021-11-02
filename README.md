@@ -1,5 +1,9 @@
-# CV-Designer
+# CV Designer
 An app that will make creating CV's easier
+
+## Wiki
+
+<a href="https://github.com/5G-Pickles/CV-Designer/wiki">Wiki home</a>
 
 ## Overview
 
@@ -12,12 +16,14 @@ CV Maker project is a colaborative project which will be developed by the "Pickl
 
 Application will be developed with Java, HTML, CSS & JavaScript. JavaFX will be used for desktop app developement and Google Services and maybe Google Realtime Database (Firebase) or an SQL Databse will be put in place as well.
 
-More info on Feature can be found in <a href="./Conception.md">Conception.md</a>
+More info on <b>Features</b> can be found in <a href="https://github.com/5G-Pickles/CV-Designer/wiki/JavaFX-frontend-concept">JavaFX frontend concept</a> and <a href="https://github.com/5G-Pickles/CV-Designer/wiki/Designer-frontend-concept">Designer frontend concept</a>
+Frontend design project can be found on <a href="https://www.figma.com/file/rGEE2PB2GkbRcMxRHoM9ZI/CV-Designer?node-id=0%3A1">Figma</a>
 
 
 
 
 ## Features
+
 <ol>
   <li>Caches all sensitive data like names, surnames, date of birth, tel. no., education, job experiance etc.</li>
   <li>Provides desktop application which contains a JS-written <b>Designer</b> app within webview which:</li>
@@ -37,7 +43,7 @@ More info on Feature can be found in <a href="./Conception.md">Conception.md</a>
     </ul>
     <li>Designer will also allow user to insert pictures, set backgrounds and the style of the CV</li>
     <li>Components will be pre-filled and we plan on creating some ready to go designs (presets)</li>
-    <li>Panels will be layed out on a static grid (A4 standard paper) - first app design considers 32x16 grid</li>
+    <li>Panels will be layed out on a static grid (A4 standard paper) - first app design considers 21x30 grid</li>
   </ol>
   <li>Provides user with an option to save his/hers created CV within a PDF format in a local path within the system (or within a database if this part of the project comes to be)</li>
   <li>Along side the developement of this application a ne proprietary format will be developed (based on a xml-like structure) which will be used within the designer application - this format will not leave the application itself as all CV's will be formatted upon "printing" or "finalizing" the project to a PDF format</li>
