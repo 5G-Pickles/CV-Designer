@@ -8,13 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.pickles.cvdesigner.MainWindow;
-import org.pickles.cvdesigner.enums.WindowSizes;
+import org.pickles.cvdesigner.Main;
+import org.pickles.cvdesigner.enums.SceneSizes;
 
 import java.io.IOException;
 
 
-public class MainWindowController {
+public class MainSceneController {
     public Stage webViewStage;
 
     public void setWebViewStage(Stage stage) {
@@ -66,22 +66,17 @@ public class MainWindowController {
 
     public void openDesignerWebView(ActionEvent actionEvent) throws IOException {
         if (webViewStage == null || !webViewStage.isShowing()) {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("fxml/webViewWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/webViewScene.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),
-                    WindowSizes.WEB_VIEW_WIDTH.value,
-                    WindowSizes.WEB_VIEW_HEIGHT.value);
-
-            //TODO: figure out how to apply style from .css file; the method below does't work; <link...> in html doesn't work either
-            //scene.getStylesheets().add("/org/pickles/cvdesigner/webview/style.css");
-            setWebViewStage(new Stage());
+                    SceneSizes.WEB_VIEW_WIDTH.value,
+                    SceneSizes.WEB_VIEW_HEIGHT.value);
+            setWebViewStage(Main.classStage);
             webViewStage.setTitle("Designer Webview");
             webViewStage.setScene(scene);
             webViewStage.show();
         } else {
             webViewStage.toFront();
         }
-
-        //TODO: [i guess it's done] make sure the new window opens once, so far a new window is being created each time  the button is pressed
     }
 }
 
