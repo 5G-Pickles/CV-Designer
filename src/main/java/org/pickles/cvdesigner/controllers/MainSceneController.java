@@ -70,7 +70,7 @@ public class MainSceneController {
             Scene scene = new Scene(fxmlLoader.load(),
                     SceneSizes.WEB_VIEW_WIDTH.value,
                     SceneSizes.WEB_VIEW_HEIGHT.value);
-            setWebViewStage(Main.classStage);
+            setWebViewStage(Main.mainStage);
             webViewStage.setTitle("Designer Webview");
             webViewStage.setScene(scene);
             webViewStage.show();
