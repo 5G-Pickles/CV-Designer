@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.Validator;
 
 import java.io.IOException;
 
@@ -38,18 +39,12 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     @FXML
     public void validateName(KeyEvent keyEvent) {
         String value = nameTextField.getText();
-
-        if (!value.equals("Nigga")) {
-            nameLabel.setTextFill(Color.RED);
-        }
-
-        if (value.equals("Nigga")) {
-            nameLabel.setTextFill(new Color(0.0, 0.2996, 0.7004, 1.0));
-        }
+        Validator.validationPassed(nameLabel, Validator.textValid(value, true, true));
     }
 
     public void validateSurname(KeyEvent keyEvent) {
-
+        String value = surnameTextField.getText();
+        Validator.validationPassed(surnameLabel, Validator.textValid(value, true, true));
     }
 
     public void validateTelephone(KeyEvent keyEvent) {
