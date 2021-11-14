@@ -2,10 +2,7 @@ package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.ScenePaths;
@@ -34,6 +31,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public Button backToStartButton;
     public Button nextToBasicDataWindow2Button;
+    public ToggleGroup sexRadioButtonToggleGroup;
 
     @FXML
     public void validateName(KeyEvent keyEvent) {
@@ -47,15 +45,10 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void validateTelephone(KeyEvent keyEvent) {
-
+        Styling.formatTelephoneNumber(telephoneTextField);
     }
 
     public void validateEmail(KeyEvent keyEvent) {
-
-    }
-
-    @FXML
-    public void selectRadioCheck(ActionEvent actionEvent) {
 
     }
 
