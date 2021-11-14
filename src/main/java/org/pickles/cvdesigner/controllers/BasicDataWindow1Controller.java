@@ -8,10 +8,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
 import java.io.IOException;
@@ -39,12 +38,12 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     @FXML
     public void validateName(KeyEvent keyEvent) {
         String value = nameTextField.getText();
-        Validator.validationPassed(nameLabel, Validator.textValid(value, true, true));
+        Styling.showError(nameLabel, Validator.textValid(value, true, true));
     }
 
     public void validateSurname(KeyEvent keyEvent) {
         String value = surnameTextField.getText();
-        Validator.validationPassed(surnameLabel, Validator.textValid(value, true, true));
+        Styling.showError(surnameLabel, Validator.textValid(value, true, true));
     }
 
     public void validateTelephone(KeyEvent keyEvent) {
