@@ -52,6 +52,11 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     }
 
+    public String getSexRadioButtonSelected() {
+        RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
+        return selectedRadioButton.getText();
+    }
+
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
         loadScene(SceneTitles.START_TITLE.value, ScenePaths.START_SCENE.value);
     }
