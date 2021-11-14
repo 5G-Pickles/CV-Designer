@@ -104,14 +104,14 @@
                   </Label>
                   <TextField fx:id="companyNameTextField" onKeyReleased="#validateCompanyName" prefHeight="39.0" prefWidth="266.0"
                              style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2">
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
                   <TextField fx:id="addressTextField" onKeyReleased="#validateAddress" prefHeight="39.0" prefWidth="266.0"
                              style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2"
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
                              GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -119,7 +119,7 @@
                   </TextField>
                   <TextField fx:id="nipTextField" onKeyReleased="#validateNip" prefHeight="39.0" prefWidth="266.0"
                              style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2"
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
                              GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -145,7 +145,7 @@
                               GridPane.columnIndex="2" GridPane.rowIndex="5" />
                   <TextField fx:id="positionTextField" onKeyReleased="#validatePosition" prefHeight="47.0" prefWidth="43.0"
                              style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2"
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
                              GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />

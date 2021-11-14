@@ -126,22 +126,26 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                              -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2">
+                  <TextField fx:id="nameTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="surnameTextField" onKeyReleased="#validateSurname" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                              -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="surnameTextField" onKeyReleased="#validateSurname" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="telephoneTextField" onKeyReleased="#validateTelephone" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                              -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="telephoneTextField" onKeyReleased="#validateTelephone" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="emailTextField" onKeyReleased="#validateEmail" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                              -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField fx:id="emailTextField" onKeyReleased="#validateEmail" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -186,8 +190,10 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700;                     -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
-            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToBasicDataWindow2AndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700;
+            -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToBasicDataWindow2AndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;
+            -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
       </children>
     </AnchorPane>
   </children>
