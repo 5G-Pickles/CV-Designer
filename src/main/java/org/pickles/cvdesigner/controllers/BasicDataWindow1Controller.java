@@ -3,7 +3,6 @@ package org.pickles.cvdesigner.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
@@ -34,27 +33,37 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public ToggleGroup sexRadioButtonToggleGroup;
 
     @FXML
-    public void validateName(KeyEvent keyEvent) {
+    public boolean validateName() {
         String value = nameTextField.getText();
-        Styling.showError(nameLabel, Validator.textValid(value, true, true));
+        Styling.showError(nameLabel, Validator.textValid(value, true, true, "name"));
+
+        return Validator.textValid(value, true, true, "name");
     }
 
-    public void validateSurname(KeyEvent keyEvent) {
+    public boolean validateSurname() {
         String value = surnameTextField.getText();
-        Styling.showError(surnameLabel, Validator.textValid(value, true, true));
+        Styling.showError(surnameLabel, Validator.textValid(value, true, true, "name"));
+
+        return Validator.textValid(value, true, true, "name");
     }
 
-    public void validateTelephone(KeyEvent keyEvent) {
+    public void validateTelephone() {
         Styling.formatTelephoneNumber(telephoneTextField);
     }
 
-    public void validateEmail(KeyEvent keyEvent) {
+    public boolean validateEmail() {
+        String value = emailTextField.getText();
+        Styling.showError(emailLabel, Validator.textValid(value, true, true, "email"));
 
+        return Validator.textValid(value, true, true, "email");
     }
 
     public String getSexRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
-        return selectedRadioButton.getText();
+        if (selectedRadioButton!=null)
+            return selectedRadioButton.getText();
+        else
+            return "";
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
@@ -62,6 +71,17 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
+        if (this.validateName() && this.validateSurname() && this.validateEmail()) {
+            loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
+        } else {
+            Styling.showError(nameLabel, Validator.textValid(nameTextField.getText(), true, true, "name"));
+            Styling.showError(surnameLabel, Validator.textValid(surnameTextField.getText(), true, true, "name"));
+            Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(), true, true, "email"));
+
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Input not valid");
+            errorAlert.setContentText("Please make sure you fill in obligatory text fields appropriately");
+            errorAlert.showAndWait();
+        }
     }
 }

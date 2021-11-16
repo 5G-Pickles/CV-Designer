@@ -1,7 +1,7 @@
 package org.pickles.cvdesigner.helpers;
 
 public abstract class Validator {
-    public static boolean textValid(String text, boolean obligatory, boolean strictCheck) {
+    public static boolean textValid(String text, boolean obligatory, boolean strictCheck, String type) {
         if (text == null) {
             return false;
         } else {
@@ -9,7 +9,14 @@ public abstract class Validator {
                 return !obligatory;
             } else {
                 if (strictCheck) {
-                    return text.matches("([A-Z][a-z]+)(\s([A-Z][a-z]+))*");
+                    if (type.equals("name")) {
+                        return text.matches("([A-Z][a-z]+)(\s([A-Z][a-z]+))*");
+                    }
+                    if (type.equals("email")) {
+                        return text.matches("(\\w)+@(\\w)+");
+                    } else {
+                        return false;
+                    }
                 } else {return true;}
             }
         }
