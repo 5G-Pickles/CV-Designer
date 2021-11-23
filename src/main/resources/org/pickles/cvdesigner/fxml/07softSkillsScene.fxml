@@ -16,7 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SoftSkillsController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.pickles.cvdesigner.controllers.SoftSkillsController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -57,11 +59,18 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;"
+                  VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="backToHardSkills" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToHardskills" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
-            <Button fx:id="nextToOtherInfo" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToOtherInfoAndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
-            <CharmListView fx:id="softSkillsCharmListView" layoutX="14.0" layoutY="53.0" prefHeight="508.0" prefWidth="248.0" style="-fx-background-color: #B2C8E6; -fx-border-color: #5989CA; -fx-border-radius: 10; -fx-background-radius: 10;" />
+            <Button fx:id="backToHardSkills" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToHardskills"
+                    style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;
+                    -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToOtherInfo" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToOtherInfoAndParse"
+                    style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;
+                    -fx-padding: 9 24;" text="Next" />
+            <CharmListView fx:id="softSkillsCharmListView" layoutX="14.0" layoutY="53.0" prefHeight="508.0" prefWidth="248.0"
+                           style="-fx-background-color: #B2C8E6; -fx-border-color: #5989CA; -fx-border-radius: 10;
+                           -fx-background-radius: 10;" />
             <GridPane fx:id="softSkillsGridPane" layoutX="362.0" layoutY="117.0" prefWidth="400.0" style="-fx-vgap: 50; -fx-hgap: 20;">
                <columnConstraints>
                   <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="190.0" minWidth="0.0" prefWidth="103.0" />
@@ -72,22 +81,28 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="300.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="topicTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="1">
+                  <TextField fx:id="topicTextField" onKeyReleased="#validateTopic" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Topic:" textAlignment="JUSTIFY" textFill="#004aad">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Topic:" textAlignment="JUSTIFY"
+                         textFill="#004aad">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Description:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Description:" textAlignment="JUSTIFY"
+                         textFill="#004aad" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="descriptionTextArea" prefHeight="300.0" prefWidth="226.0" style="-fx-background-color: #B2C8E6; -fx-border-color: #5989CA; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextArea fx:id="descriptionTextArea" prefHeight="300.0" prefWidth="226.0" style="-fx-background-color: #B2C8E6;
+                  -fx-border-color: #5989CA; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1"
+                            GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

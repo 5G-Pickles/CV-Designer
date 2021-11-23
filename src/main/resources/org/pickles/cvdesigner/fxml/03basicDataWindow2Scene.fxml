@@ -16,7 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BasicDataWindow2Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.pickles.cvdesigner.controllers.BasicDataWindow2Controller">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -57,9 +59,11 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;"
+                  VBox.vgrow="ALWAYS">
          <children>
-            <GridPane fx:id="loactionInfoGridPane" layoutX="-10.0" layoutY="97.0" prefHeight="188.0" prefWidth="570.0" style="-fx-vgap: 50; -fx-hgap: 20;">
+            <GridPane fx:id="loactionInfoGridPane" layoutX="-10.0" layoutY="97.0" prefHeight="188.0" prefWidth="570.0"
+                      style="-fx-vgap: 50; -fx-hgap: 20;">
                <columnConstraints>
                   <ColumnConstraints />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="200.0" />
@@ -74,52 +78,69 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.columnIndex="1">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country:" textAlignment="JUSTIFY"
+                         textFill="#004aad" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City:" textFill="#004aad"
+                         GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road:" textFill="#004aad"
+                         GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment:" textFill="#004aad"
+                         GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="countryTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2">
+                  <TextField fx:id="countryTextField" onKeyReleased="#validateCountry" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="cityTextField" onKeyReleased="#validateSurname" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cityTextField" onKeyReleased="#validateCity" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
+                             GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="roadTextField" onKeyReleased="#validateTelephone" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="roadTextField" onKeyReleased="#validateRoad" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
+                             GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad"
+                         GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="zipCodeTextField" onKeyReleased="#validateEmail" prefHeight="47.0" prefWidth="129.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="zipCodeTextField" onKeyReleased="#validateZipCode" prefHeight="47.0" prefWidth="129.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
+                             GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <GridPane fx:id="buildingApartmentGridPane" prefHeight="30.0" prefWidth="238.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <GridPane fx:id="buildingApartmentGridPane" prefHeight="30.0" prefWidth="238.0" GridPane.columnIndex="2"
+                            GridPane.rowIndex="3">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="5.0" />
@@ -129,33 +150,45 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="buildingTextField" onKeyReleased="#validateEmail" prefHeight="47.0" prefWidth="633.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;">
+                        <TextField fx:id="buildingTextField" onKeyReleased="#validateBuilding" prefHeight="47.0" prefWidth="633.0"
+                                   style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                                   -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="apartmentTextField" onKeyReleased="#validateEmail" prefHeight="47.0" prefWidth="73.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #ffff;" GridPane.columnIndex="2">
+                        <TextField fx:id="apartmentTextField" onKeyReleased="#validateApartment" prefHeight="47.0" prefWidth="73.0"
+                                   style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                                   -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </TextField>
-                        <Label alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="38.0" text="/" textAlignment="CENTER" textFill="#004aad" GridPane.columnIndex="1">
+                        <Label alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="38.0" text="/" textAlignment="CENTER"
+                               textFill="#004aad" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="48.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="showOnMapButton" mnemonicParsing="false" onAction="#showOnMap" prefHeight="35.0" prefWidth="361.0" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Show on map" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Button fx:id="showOnMapButton" mnemonicParsing="false" onAction="#showOnMap" prefHeight="35.0" prefWidth="361.0"
+                          style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;
+                          -fx-padding: 9 24;" text="Show on map" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Button fx:id="backToBasicDataWindow1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToBasicDataWindow1" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
-            <Button fx:id="nextToEducationHistory" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToEducationHistoryAndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="backToBasicDataWindow1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
+                    onAction="#goBackToBasicDataWindow1" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;
+                    -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToEducationHistory" layoutX="810.0" layoutY="526.0" mnemonicParsing="false"
+                    onAction="#goNextToEducationHistoryAndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;
+                    -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
             <WebView fx:id="mapWebView" layoutX="587.0" layoutY="37.0" prefHeight="473.0" prefWidth="303.0" />
-            <Label alignment="CENTER_RIGHT" layoutX="717.0" layoutY="14.0" prefHeight="27.0" prefWidth="44.0" text="Map" textAlignment="JUSTIFY" textFill="#004aad">
+            <Label alignment="CENTER_RIGHT" layoutX="717.0" layoutY="14.0" prefHeight="27.0" prefWidth="44.0" text="Map"
+                   textAlignment="JUSTIFY" textFill="#004aad">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

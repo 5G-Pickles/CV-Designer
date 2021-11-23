@@ -1,17 +1,15 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.Styling;
+import org.pickles.cvdesigner.helpers.Validator;
 
 import java.io.IOException;
 
@@ -34,35 +32,46 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public Button backToStartButton;
     public Button nextToBasicDataWindow2Button;
+    public ToggleGroup sexRadioButtonToggleGroup;
 
-    @FXML
-    public void validateName(KeyEvent keyEvent) {
+
+    public boolean validateName() {
         String value = nameTextField.getText();
+        Styling.showError(nameLabel, Validator.textValid(value, true, true, InputType.NAME));
 
-        if (!value.equals("Nigga")) {
-            nameLabel.setTextFill(Color.RED);
+        return Validator.textValid(value, true, true, InputType.NAME);
+    }
+
+    public boolean validateSurname() {
+        String value = surnameTextField.getText();
+        Styling.showError(surnameLabel, Validator.textValid(value, true, true, InputType.NAME));
+
+        return Validator.textValid(value, true, true, InputType.NAME);
+    }
+
+    public boolean validateTelephone(KeyEvent key) {
+        String value = telephoneTextField.getText();
+        Styling.showError(telephoneLabel, Validator.textValid(value, true, true, InputType.TELEPHONE));
+        if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
+            Styling.formatTelephoneNumber(telephoneTextField);
         }
 
-        if (value.equals("Nigga")) {
-            nameLabel.setTextFill(new Color(0.0, 0.2996, 0.7004, 1.0));
-        }
+        return Validator.textValid(value, true, true, InputType.TELEPHONE);
     }
 
-    public void validateSurname(KeyEvent keyEvent) {
+    public boolean validateEmail() {
+        String value = emailTextField.getText();
+        Styling.showError(emailLabel, Validator.textValid(value, true, true, InputType.EMAIL));
 
+        return Validator.textValid(value, true, true, InputType.EMAIL);
     }
 
-    public void validateTelephone(KeyEvent keyEvent) {
-
-    }
-
-    public void validateEmail(KeyEvent keyEvent) {
-
-    }
-
-    @FXML
-    public void selectRadioCheck(ActionEvent actionEvent) {
-
+    public String getSexRadioButtonSelected() {
+        RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
+        if (selectedRadioButton!=null)
+            return selectedRadioButton.getText();
+        else
+            return "";
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
@@ -70,6 +79,22 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
+        if (this.validateName() && this.validateSurname() && this.validateEmail()) {
+            loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
+        } else {
+            Styling.showError(nameLabel, Validator.textValid(nameTextField.getText(),
+                    true, true, InputType.NAME));
+            Styling.showError(surnameLabel, Validator.textValid(surnameTextField.getText(),
+                    true, true, InputType.NAME));
+            Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(),
+                    true, true, InputType.EMAIL));
+            Styling.showError(telephoneLabel, Validator.textValid(telephoneTextField.getText(),
+                    true, true, InputType.TELEPHONE));
+
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Input not valid");
+            errorAlert.setContentText("Please make sure you fill in obligatory text fields appropriately");
+            errorAlert.showAndWait();
+        }
     }
 }
