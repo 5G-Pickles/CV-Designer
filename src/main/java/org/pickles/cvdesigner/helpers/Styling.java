@@ -1,5 +1,7 @@
 package org.pickles.cvdesigner.helpers;
 
+import com.google.i18n.phonenumbers.AsYouTypeFormatter;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -14,18 +16,19 @@ public abstract class Styling {
     }
 
     public static void formatTelephoneNumber(TextField telephoneTextField) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("PL");
         String telephone = telephoneTextField.getText();
-        int lengthWithoutWhitespaces = telephone.replaceAll("\\s","").length();
+        String newTelephone = "";
+        for (Character number:
+             telephone.toCharArray()) {
+                newTelephone = formatter.inputDigit(number);
+        }
 
-        if (!telephone.isBlank() && telephone.substring(telephone.length()-1).matches("\\d")) {
-            if (telephone.length() > 3) {
-                if ((lengthWithoutWhitespaces - 2) % 3 == 0) {
-                    telephoneTextField.setText(telephone.substring(0, telephone.length() - 2) + " " + telephone.substring(telephone.length() - 2));
-                    telephoneTextField.positionCaret(telephoneTextField.getText().length());
-                }
-            }
-        } else {
-            telephoneTextField.deletePreviousChar();
+        telephoneTextField.clear();
+        for (Character number:
+             newTelephone.toCharArray()) {
+            telephoneTextField.appendText(number.toString());
         }
     }
 }
