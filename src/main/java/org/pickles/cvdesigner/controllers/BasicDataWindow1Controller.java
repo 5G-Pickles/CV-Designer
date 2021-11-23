@@ -1,9 +1,11 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
 import org.pickles.cvdesigner.helpers.Styling;
@@ -32,30 +34,36 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public Button nextToBasicDataWindow2Button;
     public ToggleGroup sexRadioButtonToggleGroup;
 
-    @FXML
+
     public boolean validateName() {
         String value = nameTextField.getText();
-        Styling.showError(nameLabel, Validator.textValid(value, true, true, "name"));
+        Styling.showError(nameLabel, Validator.textValid(value, true, true, InputType.NAME));
 
-        return Validator.textValid(value, true, true, "name");
+        return Validator.textValid(value, true, true, InputType.NAME);
     }
 
     public boolean validateSurname() {
         String value = surnameTextField.getText();
-        Styling.showError(surnameLabel, Validator.textValid(value, true, true, "name"));
+        Styling.showError(surnameLabel, Validator.textValid(value, true, true, InputType.NAME));
 
-        return Validator.textValid(value, true, true, "name");
+        return Validator.textValid(value, true, true, InputType.NAME);
     }
 
-    public void validateTelephone() {
-        Styling.formatTelephoneNumber(telephoneTextField);
+    public boolean validateTelephone(KeyEvent key) {
+        String value = telephoneTextField.getText();
+        Styling.showError(telephoneLabel, Validator.textValid(value, true, true, InputType.TELEPHONE));
+        if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
+            Styling.formatTelephoneNumber(telephoneTextField);
+        }
+
+        return Validator.textValid(value, true, true, InputType.TELEPHONE);
     }
 
     public boolean validateEmail() {
         String value = emailTextField.getText();
-        Styling.showError(emailLabel, Validator.textValid(value, true, true, "email"));
+        Styling.showError(emailLabel, Validator.textValid(value, true, true, InputType.EMAIL));
 
-        return Validator.textValid(value, true, true, "email");
+        return Validator.textValid(value, true, true, InputType.EMAIL);
     }
 
     public String getSexRadioButtonSelected() {
@@ -74,9 +82,14 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         if (this.validateName() && this.validateSurname() && this.validateEmail()) {
             loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
         } else {
-            Styling.showError(nameLabel, Validator.textValid(nameTextField.getText(), true, true, "name"));
-            Styling.showError(surnameLabel, Validator.textValid(surnameTextField.getText(), true, true, "name"));
-            Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(), true, true, "email"));
+            Styling.showError(nameLabel, Validator.textValid(nameTextField.getText(),
+                    true, true, InputType.NAME));
+            Styling.showError(surnameLabel, Validator.textValid(surnameTextField.getText(),
+                    true, true, InputType.NAME));
+            Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(),
+                    true, true, InputType.EMAIL));
+            Styling.showError(telephoneLabel, Validator.textValid(telephoneTextField.getText(),
+                    true, true, InputType.TELEPHONE));
 
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Input not valid");

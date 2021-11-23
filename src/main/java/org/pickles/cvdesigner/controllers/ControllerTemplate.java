@@ -18,5 +18,5 @@ public abstract class ControllerTemplate {
         stage.setTitle(sceneTitle);
         stage.setScene(scene);
         stage.show();
-    };
+    }
 }

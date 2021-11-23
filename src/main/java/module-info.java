@@ -10,6 +10,8 @@ module org.pickles.cvdesigner {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.gluonhq.charm.glisten;
+    requires commons.validator;
+    requires libphonenumber;
 
     opens org.pickles.cvdesigner to javafx.fxml;
     exports org.pickles.cvdesigner;

@@ -105,46 +105,57 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="nameLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Name:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.columnIndex="1">
+                  <Label fx:id="nameLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0"
+                         text="Name:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="surnameLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="Surname:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="surnameLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0"
+                         text="Surname:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="telephoneLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Telephone:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="telephoneLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0"
+                         text="Telephone:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="410.0" text="E-mail:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="emailLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="410.0"
+                         text="E-mail:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                  <TextField fx:id="nameTextField" onKeyReleased="#validateName" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
                   -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="surnameTextField" onKeyReleased="#validateSurname" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="surnameTextField" onKeyReleased="#validateSurname" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;"
+                             GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="telephoneTextField" onKeyReleased="#validateTelephone" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="telephoneTextField" onKeyReleased="#validateTelephone" prefHeight="39.0"
+                             prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6;
+                             -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 4;
+                             -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="emailTextField" onKeyReleased="#validateEmail" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                  -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField fx:id="emailTextField" onKeyReleased="#validateEmail" prefHeight="39.0" prefWidth="266.0"
+                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
+                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;"
+                             GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -160,7 +171,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                            <RadioButton fx:id="maleRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" text="Male" textFill="#004aad" GridPane.columnIndex="1">
+                            <RadioButton fx:id="maleRadioButton" contentDisplay="CENTER" mnemonicParsing="false"
+                                         prefHeight="27.0" prefWidth="109.0" text="Male" textFill="#004aad"
+                                         GridPane.columnIndex="1">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
@@ -168,7 +181,8 @@
                                     <ToggleGroup fx:id="sexRadioButtonToggleGroup"/>
                                 </toggleGroup>
                             </RadioButton>
-                            <RadioButton fx:id="femaleRadioButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" text="Female" textFill="#004aad" GridPane.columnIndex="2">
+                            <RadioButton fx:id="femaleRadioButton" mnemonicParsing="false" prefHeight="27.0"
+                                         prefWidth="125.0" text="Female" textFill="#004aad" GridPane.columnIndex="2">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
@@ -176,7 +190,8 @@
                                     <fx:reference source ="sexRadioButtonToggleGroup"/>
                                 </toggleGroup>
                             </RadioButton>
-                            <RadioButton fx:id="otherRadioButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" text="Other" textFill="#004aad" GridPane.columnIndex="3">
+                            <RadioButton fx:id="otherRadioButton" mnemonicParsing="false" prefHeight="27.0"
+                                         prefWidth="109.0" text="Other" textFill="#004aad" GridPane.columnIndex="3">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
@@ -186,7 +201,8 @@
                             </RadioButton>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Sex:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Sex:"
+                         textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -196,10 +212,13 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700;
-            -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
-            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToBasicDataWindow2AndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;
-            -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
+                    onAction="#goBackToStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;
+                    -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false"
+                    onAction="#goNextToBasicDataWindow2AndParse" style="-fx-background-color: #004AAD;
+                    -fx-text-fill: #ffff;-fx-font-weight: 700; -fx-background-radius: 10px;
+                    -fx-padding: 9 24;" text="Next" />
       </children>
     </AnchorPane>
   </children>
