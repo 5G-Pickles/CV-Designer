@@ -93,7 +93,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Input not valid");
-            errorAlert.setContentText("Please make sure you fill in obligatory text fields appropriately");
+            errorAlert.setContentText("Please make sure obligatory text fields are filled in appropriately");
             errorAlert.showAndWait();
         }
     }
