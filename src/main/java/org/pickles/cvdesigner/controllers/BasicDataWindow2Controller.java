@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.InvalidInputAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -63,10 +64,7 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
         } else {
             Styling.showError(countryLabel, Validator.textValid(countryTextField.getText(), false, true, InputType.COUNTRY));
 
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Input not valid");
-            errorAlert.setContentText("Please make sure obligatory text fields are filled in appropriately");
-            errorAlert.showAndWait();
+            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }
 }

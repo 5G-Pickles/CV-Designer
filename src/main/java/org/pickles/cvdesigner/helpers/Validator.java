@@ -26,9 +26,8 @@ public abstract class Validator {
                         return false;
                     }
                 }
-                case COUNTRY -> {
-                    return countriesList.isCountry(text);
-                }
+                case COUNTRY -> { return countriesList.isCountry(text); }
+                case CAPITALIZED -> { return Character.isUpperCase(text.charAt(0)); }
             }
         }
         return true;
