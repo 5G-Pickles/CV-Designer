@@ -1,6 +1,7 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -27,9 +28,11 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
     public Label roadLabel;
     public Label buildingLabel;
 
-    public void validateCountry(KeyEvent keyEvent) {
+    public boolean validateCountry() {
         String text = countryTextField.getText();
         Styling.showError(countryLabel, Validator.textValid(text, false, true, InputType.COUNTRY));
+
+        return Validator.textValid(text, false, true, InputType.COUNTRY);
     }
 
     public void validateCity(KeyEvent keyEvent) {
@@ -55,6 +58,15 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
     }
 
     public void goNextToEducationHistoryAndParse(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+        if (this.validateCountry()) {
+            loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+        } else {
+            Styling.showError(countryLabel, Validator.textValid(countryTextField.getText(), false, true, InputType.COUNTRY));
+
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Input not valid");
+            errorAlert.setContentText("Please make sure obligatory text fields are filled in appropriately");
+            errorAlert.showAndWait();
+        }
     }
 }
