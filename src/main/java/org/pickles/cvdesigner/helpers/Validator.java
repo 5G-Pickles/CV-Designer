@@ -6,6 +6,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
 public abstract class Validator {
     private static final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+    private static final Countries countriesList = new Countries();
 
     public static boolean textValid(String text, boolean obligatory, boolean strictCheck, InputType type) {
         if (text == null) {
@@ -16,7 +17,7 @@ public abstract class Validator {
         }
         if (strictCheck) {
             switch (type) {
-                case NAME -> { return !text.isBlank() && text.length() > 2; }
+                case NAME -> { return text.matches("([A-Z][a-z]+)(\s([A-Z][a-z]+))*"); }
                 case EMAIL -> { return EmailValidator.getInstance().isValid(text); }
                 case TELEPHONE -> {
                     try {
@@ -24,6 +25,9 @@ public abstract class Validator {
                     } catch (NumberParseException e) {
                         return false;
                     }
+                }
+                case COUNTRY -> {
+                    return countriesList.isCountry(text);
                 }
             }
         }
