@@ -78,25 +78,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country:" textAlignment="JUSTIFY"
+                  <Label fx:id="countryLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country:" textAlignment="JUSTIFY"
                          textFill="#004aad" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City:" textFill="#004aad"
+                  <Label fx:id="cityLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road:" textFill="#004aad"
+                  <Label fx:id="roadLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment:" textFill="#004aad"
+                  <Label fx:id="buildingLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
