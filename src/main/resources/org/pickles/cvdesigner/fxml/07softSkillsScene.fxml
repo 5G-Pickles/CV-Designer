@@ -62,7 +62,7 @@
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;"
                   VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="backToHardSkills" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToHardskills"
+            <Button fx:id="backToHardSkills" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToHardSkills"
                     style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;
                     -fx-padding: 9 24;" text="Back" />
             <Button fx:id="nextToOtherInfo" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToOtherInfoAndParse"
@@ -88,7 +88,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Topic:" textAlignment="JUSTIFY"
+                  <Label fx:id="topicLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Topic:" textAlignment="JUSTIFY"
                          textFill="#004aad">
                      <font>
                         <Font name="System Bold" size="18.0" />
