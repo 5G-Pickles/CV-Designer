@@ -5,7 +5,8 @@ public enum InputType {
     EMAIL("email"),
     TELEPHONE("telephone"),
     COUNTRY("country"),
-    CAPITALIZED("capitalized");
+    CAPITALIZED("capitalized"),
+    NIP("nip");
 
     public final String value;
 
