@@ -78,25 +78,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Company name:" textAlignment="JUSTIFY"
+                  <Label fx:id="companyNameLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Company name:" textAlignment="JUSTIFY"
                          textFill="#004aad" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="Address:" textFill="#004aad"
+                  <Label fx:id="addressLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="Address:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="NIP:" textFill="#004aad"
+                  <Label fx:id="nipLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="NIP:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Position:" textFill="#004aad"
+                  <Label fx:id="positionLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Position:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -125,13 +125,13 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="From:" textFill="#004aad"
+                  <Label fx:id="fromDateLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="From:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="To:" textFill="#004aad"
+                  <Label fx:id="toDateLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="To:" textFill="#004aad"
                          GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font name="System Bold" size="18.0" />
