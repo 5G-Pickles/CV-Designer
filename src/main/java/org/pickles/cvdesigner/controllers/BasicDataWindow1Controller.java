@@ -52,7 +52,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public boolean validateTelephone(KeyEvent key) {
         String value = telephoneTextField.getText();
-        Styling.showError(telephoneLabel, Validator.textValid(value, true, true, InputType.TELEPHONE));
+        Styling.showError(telephoneLabel, Validator.textValid(value, false, true, InputType.TELEPHONE));
         if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
             Styling.formatTelephoneNumber(telephoneTextField);
         }
@@ -90,7 +90,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
             Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(),
                     true, true, InputType.EMAIL));
             Styling.showError(telephoneLabel, Validator.textValid(telephoneTextField.getText(),
-                    true, true, InputType.TELEPHONE));
+                    false, true, InputType.TELEPHONE));
 
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
