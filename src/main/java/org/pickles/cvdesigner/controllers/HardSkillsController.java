@@ -35,6 +35,5 @@ public class HardSkillsController extends ControllerTemplate {
             Styling.showError(topicLabel, Validator.textValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
-
     }
 }

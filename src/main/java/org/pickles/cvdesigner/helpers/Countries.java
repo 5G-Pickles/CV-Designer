@@ -19,9 +19,7 @@ public class Countries {
 
     public boolean isCountry(String text) {
         for (String country : countries) {
-            if (country.equals(text)) {
-                return true;
-            }
+            if (country.equals(text)) { return true; }
         }
         return false;
     }

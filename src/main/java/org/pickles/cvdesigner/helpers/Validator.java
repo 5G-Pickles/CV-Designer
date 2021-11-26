@@ -9,12 +9,8 @@ public abstract class Validator {
     private static final Countries countriesList = new Countries();
 
     public static boolean textValid(String text, boolean obligatory, boolean strictCheck, InputType type) {
-        if (text == null) {
-            return false;
-        }
-        if (text.isBlank()) {
-            return !obligatory;
-        }
+        if (text == null) { return false; }
+        if (text.isBlank()) { return !obligatory; }
         if (strictCheck) {
             switch (type) {
                 case NAME -> { return text.matches("([A-Z][a-z]+)(\s([A-Z][a-z]+))*"); }
@@ -47,8 +43,6 @@ public abstract class Validator {
             }
             nip[9] = Integer.parseInt(nipString[9]);
             return sum%11==nip[9];
-        } else {
-            return false;
-        }
+        } else { return false; }
     }
 }
