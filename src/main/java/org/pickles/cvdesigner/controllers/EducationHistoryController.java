@@ -70,9 +70,7 @@ public class EducationHistoryController extends ControllerTemplate {
 
         if (fromDate != null && toDate!= null) {
             return (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
-        } else {
-            return true;
-        }
+        } else { return true; }
     }
 
     public void goNextToEmploymentHistoryAndParse(ActionEvent actionEvent) throws IOException {

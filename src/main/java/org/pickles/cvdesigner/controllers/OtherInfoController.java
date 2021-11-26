@@ -36,5 +36,4 @@ public class OtherInfoController extends ControllerTemplate {
     public void goNextToTemplatesAndParse(ActionEvent actionEvent) throws IOException {
 
     }
-
 }
