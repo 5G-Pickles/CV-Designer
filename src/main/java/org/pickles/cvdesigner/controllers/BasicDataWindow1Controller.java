@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.InvalidInputAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -51,7 +52,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public boolean validateTelephone(KeyEvent key) {
         String value = telephoneTextField.getText();
-        Styling.showError(telephoneLabel, Validator.textValid(value, true, true, InputType.TELEPHONE));
+        Styling.showError(telephoneLabel, Validator.textValid(value, false, true, InputType.TELEPHONE));
         if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
             Styling.formatTelephoneNumber(telephoneTextField);
         }
@@ -68,10 +69,9 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public String getSexRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
-        if (selectedRadioButton!=null)
+        if (selectedRadioButton!=null) {
             return selectedRadioButton.getText();
-        else
-            return "";
+        } else { return ""; }
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
@@ -89,12 +89,9 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
             Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(),
                     true, true, InputType.EMAIL));
             Styling.showError(telephoneLabel, Validator.textValid(telephoneTextField.getText(),
-                    true, true, InputType.TELEPHONE));
+                    false, true, InputType.TELEPHONE));
 
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Input not valid");
-            errorAlert.setContentText("Please make sure you fill in obligatory text fields appropriately");
-            errorAlert.showAndWait();
+            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }
 }

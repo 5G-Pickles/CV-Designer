@@ -20,14 +20,12 @@ public abstract class Styling {
         AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("PL");
         String telephone = telephoneTextField.getText();
         String newTelephone = "";
-        for (Character number:
-             telephone.toCharArray()) {
+        for (Character number: telephone.toCharArray()) {
                 newTelephone = formatter.inputDigit(number);
         }
 
         telephoneTextField.clear();
-        for (Character number:
-             newTelephone.toCharArray()) {
+        for (Character number: newTelephone.toCharArray()) {
             telephoneTextField.appendText(number.toString());
         }
     }
