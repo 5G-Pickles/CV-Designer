@@ -53,9 +53,6 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public boolean validateTelephone(KeyEvent key) {
         String value = telephoneTextField.getText();
         Styling.showError(telephoneLabel, Validator.inputValid(value, false, true, InputType.TELEPHONE));
-        if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
-            Styling.formatTelephoneNumber(telephoneTextField);
-        }
 
         return Validator.inputValid(value, true, true, InputType.TELEPHONE);
     }
