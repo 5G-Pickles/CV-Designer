@@ -173,16 +173,17 @@
                      <children>
                             <RadioButton fx:id="maleRadioButton" contentDisplay="CENTER" mnemonicParsing="false"
                                          prefHeight="27.0" prefWidth="109.0" text="Male" textFill="#004aad"
-                                         GridPane.columnIndex="1">
+                                         GridPane.columnIndex="1" onKeyReleased="#validateSexRadioButton">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
                                 <toggleGroup>
-                                    <ToggleGroup fx:id="sexRadioButtonToggleGroup"/>
+                                    <ToggleGroup fx:id="sexRadioButtonToggleGroup" />
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton fx:id="femaleRadioButton" mnemonicParsing="false" prefHeight="27.0"
-                                         prefWidth="125.0" text="Female" textFill="#004aad" GridPane.columnIndex="2">
+                                         prefWidth="125.0" text="Female" textFill="#004aad" GridPane.columnIndex="2"
+                                         onKeyReleased="#validateSexRadioButton">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
@@ -191,7 +192,8 @@
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton fx:id="otherRadioButton" mnemonicParsing="false" prefHeight="27.0"
-                                         prefWidth="109.0" text="Other" textFill="#004aad" GridPane.columnIndex="3">
+                                         prefWidth="109.0" text="Other" textFill="#004aad" GridPane.columnIndex="3"
+                                         onKeyReleased="#validateSexRadioButton">
                                <font>
                                   <Font name="System Bold" size="18.0" />
                                </font>
@@ -201,7 +203,7 @@
                             </RadioButton>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Sex:"
+                  <Label fx:id="sexLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Sex*:"
                          textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />

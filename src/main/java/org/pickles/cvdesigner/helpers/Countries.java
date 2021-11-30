@@ -6,6 +6,7 @@ public class Countries {
     private final String[] countries;
 
     Countries() {
+        Locale.setDefault(new Locale("en", "GB"));
         String[] countryCodes = Locale.getISOCountries();
         countries = new String[countryCodes.length];
         int i = 0;

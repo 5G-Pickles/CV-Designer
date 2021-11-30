@@ -14,7 +14,7 @@ public abstract class Validator {
     private static final Pattern namePattern =
             Pattern.compile("^\\p{Lu}\\p{Ll}*$", Pattern.UNICODE_CHARACTER_CLASS);
 
-    public static boolean textValid(String text, boolean obligatory, boolean strictCheck, InputType type) {
+    public static boolean inputValid(String text, boolean obligatory, boolean strictCheck, InputType type) {
         if (text == null) { return false; }
         if (text.isBlank()) { return !obligatory; }
         if (strictCheck) {
@@ -33,8 +33,9 @@ public abstract class Validator {
                 case COUNTRY -> { return countriesList.isCountry(text); }
                 case CAPITALIZED -> { return Character.isUpperCase(text.charAt(0)); }
                 case NIP -> { return validateNIP(text); }
+                case SEX -> { return !text.isEmpty(); }
+                }
             }
-        }
         return true;
     }
 
