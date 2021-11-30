@@ -20,6 +20,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public Label surnameLabel;
     public Label telephoneLabel;
     public Label emailLabel;
+    public Label sexLabel;
 
     public TextField nameTextField;
     public TextField surnameTextField;
@@ -37,37 +38,41 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public boolean validateName() {
         String value = nameTextField.getText();
-        Styling.showError(nameLabel, Validator.textValid(value, true, true, InputType.NAME));
+        Styling.showError(nameLabel, Validator.inputValid(value, true, true, InputType.NAME));
 
-        return Validator.textValid(value, true, true, InputType.NAME);
+        return Validator.inputValid(value, true, true, InputType.NAME);
     }
 
     public boolean validateSurname() {
         String value = surnameTextField.getText();
-        Styling.showError(surnameLabel, Validator.textValid(value, true, true, InputType.NAME));
+        Styling.showError(surnameLabel, Validator.inputValid(value, true, true, InputType.NAME));
 
-        return Validator.textValid(value, true, true, InputType.NAME);
+        return Validator.inputValid(value, true, true, InputType.NAME);
     }
 
     public boolean validateTelephone(KeyEvent key) {
         String value = telephoneTextField.getText();
-        Styling.showError(telephoneLabel, Validator.textValid(value, false, true, InputType.TELEPHONE));
+        Styling.showError(telephoneLabel, Validator.inputValid(value, false, true, InputType.TELEPHONE));
 
-        return Validator.textValid(value, true, true, InputType.TELEPHONE);
+        return Validator.inputValid(value, true, true, InputType.TELEPHONE);
     }
 
     public boolean validateEmail() {
         String value = emailTextField.getText();
-        Styling.showError(emailLabel, Validator.textValid(value, true, true, InputType.EMAIL));
+        Styling.showError(emailLabel, Validator.inputValid(value, true, true, InputType.EMAIL));
 
-        return Validator.textValid(value, true, true, InputType.EMAIL);
+        return Validator.inputValid(value, true, true, InputType.EMAIL);
+    }
+
+    public boolean validateSexRadioButton() {
+        return !this.getSexRadioButtonSelected().isEmpty();
     }
 
     public String getSexRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
-        if (selectedRadioButton!=null) {
+        if (selectedRadioButton != null) {
             return selectedRadioButton.getText();
-        } else { return null; }
+        } else { return ""; }
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
@@ -75,18 +80,19 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
-        if (this.validateName() && this.validateSurname() && this.validateEmail()) {
+        if (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton()) {
             loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
         } else {
-            Styling.showError(nameLabel, Validator.textValid(nameTextField.getText(),
+            Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),
                     true, true, InputType.NAME));
-            Styling.showError(surnameLabel, Validator.textValid(surnameTextField.getText(),
+            Styling.showError(surnameLabel, Validator.inputValid(surnameTextField.getText(),
                     true, true, InputType.NAME));
-            Styling.showError(emailLabel, Validator.textValid(emailTextField.getText(),
+            Styling.showError(emailLabel, Validator.inputValid(emailTextField.getText(),
                     true, true, InputType.EMAIL));
-            Styling.showError(telephoneLabel, Validator.textValid(telephoneTextField.getText(),
+            Styling.showError(telephoneLabel, Validator.inputValid(telephoneTextField.getText(),
                     false, true, InputType.TELEPHONE));
-
+            Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
+                    true, true, InputType.SEX));
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }

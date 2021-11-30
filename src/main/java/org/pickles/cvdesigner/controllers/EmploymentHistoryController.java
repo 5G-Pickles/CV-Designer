@@ -35,30 +35,30 @@ public class EmploymentHistoryController extends ControllerTemplate {
 
     public boolean validateCompanyName() {
         String text = companyNameTextField.getText();
-        Styling.showError(companyNameLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(companyNameLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateAddress() {
         String text = addressTextField.getText();
-        Styling.showError(addressLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(addressLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateNip() {
         String text = nipTextField.getText();
-        Styling.showError(nipLabel, Validator.textValid(text, false, true, InputType.NIP));
+        Styling.showError(nipLabel, Validator.inputValid(text, false, true, InputType.NIP));
 
-        return Validator.textValid(text, false, true, InputType.NIP);
+        return Validator.inputValid(text, false, true, InputType.NIP);
     }
 
     public boolean validatePosition() {
         String text = positionTextField.getText();
-        Styling.showError(positionLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(positionLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     @FXML
@@ -79,10 +79,10 @@ public class EmploymentHistoryController extends ControllerTemplate {
         if (validateCompanyName() && validateAddress() && validateNip()&&validatePosition()&&validateDatesPicked()) {
             loadScene(SceneTitles.HARD_SKILLS_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
         } else {
-            Styling.showError(companyNameLabel, Validator.textValid(companyNameTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(addressLabel, Validator.textValid(addressTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(nipLabel, Validator.textValid(nipTextField.getText(), false, true, InputType.NIP));
-            Styling.showError(positionLabel, Validator.textValid(positionTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(companyNameLabel, Validator.inputValid(companyNameTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(addressLabel, Validator.inputValid(addressTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(nipLabel, Validator.inputValid(nipTextField.getText(), false, true, InputType.NIP));
+            Styling.showError(positionLabel, Validator.inputValid(positionTextField.getText(), false, true, InputType.CAPITALIZED));
 
             Styling.showError(fromDateLabel, validateDatesPicked());
             Styling.showError(toDateLabel, validateDatesPicked());

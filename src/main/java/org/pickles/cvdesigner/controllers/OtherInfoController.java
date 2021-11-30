@@ -19,16 +19,16 @@ public class OtherInfoController extends ControllerTemplate {
 
     public boolean validateOtherInfo() {
         String text = otherInfoTextArea.getText();
-        Styling.showError(otherInfoLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(otherInfoLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public void goBackToSoftSkills(ActionEvent actionEvent) throws IOException {
         if (validateOtherInfo()) {
             loadScene(SceneTitles.SOFT_SKILLS_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
-            Styling.showError(otherInfoLabel, Validator.textValid(otherInfoTextArea.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(otherInfoLabel, Validator.inputValid(otherInfoTextArea.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }
