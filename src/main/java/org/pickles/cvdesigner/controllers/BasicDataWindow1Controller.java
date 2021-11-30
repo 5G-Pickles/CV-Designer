@@ -2,7 +2,6 @@ package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.InputType;
@@ -53,9 +52,6 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public boolean validateTelephone(KeyEvent key) {
         String value = telephoneTextField.getText();
         Styling.showError(telephoneLabel, Validator.textValid(value, false, true, InputType.TELEPHONE));
-        if (!(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.LEFT)) {
-            Styling.formatTelephoneNumber(telephoneTextField);
-        }
 
         return Validator.textValid(value, true, true, InputType.TELEPHONE);
     }
