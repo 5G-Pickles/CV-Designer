@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ToggleGroup?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
       prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
@@ -85,30 +86,45 @@
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="hardSkillTypeRadioButtonToggleGroup"/>
+                     </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="certificatesRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0"
                                prefWidth="224.0" text="Certificates" textFill="#004aad">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <fx:reference source ="hardSkillTypeRadioButtonToggleGroup"/>
+                     </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="othersRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0"
                                prefWidth="224.0" selected="true" text="Others" textFill="#004aad" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <fx:reference source ="hardSkillTypeRadioButtonToggleGroup"/>
+                     </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="linksToPortfolioRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0"
                                prefWidth="224.0" text="Links to portfolio" textFill="#004aad" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <fx:reference source ="hardSkillTypeRadioButtonToggleGroup"/>
+                     </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="licencesRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0"
                                prefWidth="224.0" text="Licences" textFill="#004aad" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <fx:reference source ="hardSkillTypeRadioButtonToggleGroup"/>
+                     </toggleGroup>
                   </RadioButton>
                </children>
             </GridPane>

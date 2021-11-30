@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
@@ -16,6 +17,7 @@ import java.io.IOException;
 public class HardSkillsController extends ControllerTemplate {
     public TextField topicTextField;
     public Label topicLabel;
+    public ToggleGroup hardSkillTypeRadioButtonToggleGroup;
 
     public boolean validateTopic() {
         String text = topicTextField.getText();

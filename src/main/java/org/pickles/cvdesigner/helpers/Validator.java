@@ -4,7 +4,6 @@ import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.pickles.cvdesigner.enums.InputType;
-
 import java.util.regex.Pattern;
 
 
