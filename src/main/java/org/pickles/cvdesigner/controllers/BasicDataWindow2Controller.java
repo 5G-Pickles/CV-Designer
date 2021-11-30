@@ -63,7 +63,6 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
             loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
             Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
-
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }

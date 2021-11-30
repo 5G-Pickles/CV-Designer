@@ -2,7 +2,6 @@ package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.pickles.cvdesigner.enums.InputType;
@@ -21,6 +20,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     public Label surnameLabel;
     public Label telephoneLabel;
     public Label emailLabel;
+    public Label sexLabel;
 
     public TextField nameTextField;
     public TextField surnameTextField;
@@ -64,11 +64,15 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         return Validator.inputValid(value, true, true, InputType.EMAIL);
     }
 
+    public boolean validateSexRadioButton() {
+        return !this.getSexRadioButtonSelected().isEmpty();
+    }
+
     public String getSexRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
-        if (selectedRadioButton!=null) {
+        if (selectedRadioButton != null) {
             return selectedRadioButton.getText();
-        } else { return null; }
+        } else { return ""; }
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
@@ -76,7 +80,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
-        if (this.validateName() && this.validateSurname() && this.validateEmail()) {
+        if (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton()) {
             loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
         } else {
             Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),
@@ -87,7 +91,8 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
                     true, true, InputType.EMAIL));
             Styling.showError(telephoneLabel, Validator.inputValid(telephoneTextField.getText(),
                     false, true, InputType.TELEPHONE));
-
+            Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
+                    true, true, InputType.SEX));
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }

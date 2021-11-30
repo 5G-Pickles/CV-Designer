@@ -6,7 +6,8 @@ public enum InputType {
     TELEPHONE("telephone"),
     COUNTRY("country"),
     CAPITALIZED("capitalized"),
-    NIP("nip");
+    NIP("nip"),
+    SEX("sex");
 
     public final String value;
 
