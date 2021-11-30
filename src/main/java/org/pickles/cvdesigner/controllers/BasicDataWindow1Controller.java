@@ -71,7 +71,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
         if (selectedRadioButton!=null) {
             return selectedRadioButton.getText();
-        } else { return ""; }
+        } else { return null; }
     }
 
     public void goBackToStart(ActionEvent actionEvent) throws IOException {
