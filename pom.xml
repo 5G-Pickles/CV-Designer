@@ -20,7 +20,7 @@
         <repository>
             <id>gluonhq-repo</id>
             <name>gluonhq-repo</name>
-            <url>http://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
 
