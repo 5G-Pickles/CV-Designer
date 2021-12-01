@@ -33,30 +33,30 @@ public class EducationHistoryController extends ControllerTemplate {
 
     public boolean validateSchoolName() {
         String text = schoolNameTextField.getText();
-        Styling.showError(schoolNameLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(schoolNameLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateCountry() {
         String text = countryTextField.getText();
-        Styling.showError(countryLabel, Validator.textValid(text, false, true, InputType.COUNTRY));
+        Styling.showError(countryLabel, Validator.inputValid(text, false, true, InputType.COUNTRY));
 
-        return Validator.textValid(text, false, true, InputType.COUNTRY);
+        return Validator.inputValid(text, false, true, InputType.COUNTRY);
     }
 
     public boolean validateFieldOfStudy() {
         String text = fieldOfStudyTextField.getText();
-        Styling.showError(fieldOfStudyLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(fieldOfStudyLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateDegree() {
         String text = degreeTextField.getText();
-        Styling.showError(degreeLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(degreeLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public void goBackToBasicDataWindow2(ActionEvent actionEvent) throws IOException {
@@ -77,10 +77,10 @@ public class EducationHistoryController extends ControllerTemplate {
         if (validateSchoolName()&&validateCountry()&&validateFieldOfStudy()&&validateDegree()&& validateDatesPicked()) {
             loadScene(SceneTitles.EMPLOYMENT_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
-            Styling.showError(schoolNameLabel, Validator.textValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(countryLabel, Validator.textValid(countryTextField.getText(), false, true, InputType.COUNTRY));
-            Styling.showError(fieldOfStudyLabel, Validator.textValid(fieldOfStudyTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(degreeLabel, Validator.textValid(degreeTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
+            Styling.showError(fieldOfStudyLabel, Validator.inputValid(fieldOfStudyTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(degreeLabel, Validator.inputValid(degreeTextField.getText(), false, true, InputType.CAPITALIZED));
 
             Styling.showError(fromDateLabel, validateDatesPicked());
             Styling.showError(toDateLabel, validateDatesPicked());

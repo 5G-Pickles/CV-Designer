@@ -31,9 +31,9 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
 
     public boolean validateCountry() {
         String text = countryTextField.getText();
-        Styling.showError(countryLabel, Validator.textValid(text, false, true, InputType.COUNTRY));
+        Styling.showError(countryLabel, Validator.inputValid(text, false, true, InputType.COUNTRY));
 
-        return Validator.textValid(text, false, true, InputType.COUNTRY);
+        return Validator.inputValid(text, false, true, InputType.COUNTRY);
     }
 
     public void validateCity(KeyEvent keyEvent) {
@@ -62,7 +62,7 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
         if (this.validateCountry()) {
             loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
-            Styling.showError(countryLabel, Validator.textValid(countryTextField.getText(), false, true, InputType.COUNTRY));
+            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
 
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }

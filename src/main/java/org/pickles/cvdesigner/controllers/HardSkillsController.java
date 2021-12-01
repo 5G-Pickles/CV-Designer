@@ -19,9 +19,9 @@ public class HardSkillsController extends ControllerTemplate {
 
     public boolean validateTopic() {
         String text = topicTextField.getText();
-        Styling.showError(topicLabel, Validator.textValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
-        return Validator.textValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public void goBackToEmploymentHistory(ActionEvent actionEvent) throws IOException {
@@ -32,7 +32,7 @@ public class HardSkillsController extends ControllerTemplate {
         if (validateTopic()) {
             loadScene(SceneTitles.SOFT_SKILLS_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
-            Styling.showError(topicLabel, Validator.textValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
+            Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }
