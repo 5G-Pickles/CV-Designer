@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.web.WebView;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
@@ -20,35 +21,58 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
     public TextField cityTextField;
     public TextField roadTextField;
     public TextField zipCodeTextField;
-    public GridPane buildingApartmentGridPane;
     public TextField buildingTextField;
     public TextField apartmentTextField;
+
+    public GridPane buildingApartmentGridPane;
 
     public Label countryLabel;
     public Label cityLabel;
     public Label roadLabel;
     public Label buildingLabel;
+    public Label zipLabel;
+    public WebView mapWebView;
 
     public boolean validateCountry() {
         String text = countryTextField.getText();
-        Styling.showError(countryLabel, Validator.inputValid(text, false, true, InputType.COUNTRY));
+        Styling.showError(countryLabel, Validator.inputValid(text, true, true, InputType.COUNTRY));
 
-        return Validator.inputValid(text, false, true, InputType.COUNTRY);
+        return Validator.inputValid(text, true, true, InputType.COUNTRY);
     }
 
-    public void validateCity(KeyEvent keyEvent) {
+    public boolean validateCity() {
+        String text = cityTextField.getText();
+        Styling.showError(cityLabel, Validator.inputValid(text, true, false, null));
+
+        return Validator.inputValid(text, true, false, null);
     }
 
-    public void validateRoad(KeyEvent keyEvent) {
+    public boolean validateRoad() {
+        String text = roadTextField.getText();
+        Styling.showError(roadLabel, Validator.inputValid(text, true, false, null));
+
+        return Validator.inputValid(text, true, false, null);
     }
 
-    public void validateZipCode(KeyEvent keyEvent) {
+    public boolean validateZipCode() {
+        String text = zipCodeTextField.getText();
+        Styling.showError(zipLabel, Validator.inputValid(text, true, false, null));
+
+        return Validator.inputValid(text, true, false, null);
     }
 
-    public void validateBuilding(KeyEvent keyEvent) {
+    public boolean validateBuilding() {
+        String text = buildingTextField.getText();
+        Styling.showError(buildingLabel, Validator.inputValid(text, true, false, null));
+
+        return Validator.inputValid(text, true, false, null);
     }
 
-    public void validateApartment(KeyEvent keyEvent) {
+    public boolean validateApartment() {
+        String text = apartmentTextField.getText();
+        Styling.showError(buildingLabel, Validator.inputValid(text, true, false, null));
+
+        return Validator.inputValid(text, true, false, null);
     }
 
     public void showOnMap(ActionEvent actionEvent) {
@@ -59,10 +83,23 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
     }
 
     public void goNextToEducationHistoryAndParse(ActionEvent actionEvent) throws IOException {
-        if (this.validateCountry()) {
+        if (this.validateCountry() && this.validateCity() && this.validateRoad() && this.validateBuilding()
+                && this.validateApartment() && this.validateZipCode()) {
             loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
-            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
+            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false,
+                    true, InputType.COUNTRY));
+            Styling.showError(cityLabel, Validator.inputValid(cityTextField.getText(), true,
+                    false, null));
+            Styling.showError(roadLabel, Validator.inputValid(roadTextField.getText(), true,
+                    false, null));
+            Styling.showError(zipLabel, Validator.inputValid(zipCodeTextField.getText(), true,
+                    false, null));
+            Styling.showError(buildingLabel, Validator.inputValid(apartmentTextField.getText(), true,
+                    false, null));
+            Styling.showError(buildingLabel, Validator.inputValid(buildingTextField.getText(), true,
+                    false, null));
+
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
         }
     }

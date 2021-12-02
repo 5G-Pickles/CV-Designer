@@ -12,6 +12,11 @@ module org.pickles.cvdesigner {
     requires com.gluonhq.charm.glisten;
     requires commons.validator;
     requires libphonenumber;
+    requires google.maps.services;
+    requires json.simple;
+    requires gson;
+    requires java.sql;
+    requires java.desktop;
 
     opens org.pickles.cvdesigner to javafx.fxml;
     exports org.pickles.cvdesigner;
