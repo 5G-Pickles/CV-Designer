@@ -17,7 +17,7 @@
 <?import javafx.scene.web.WebView?>
 
 <?import javafx.scene.image.ImageView?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.BasicDataWindow2Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.BasicData2SceneController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -153,8 +153,8 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Button fx:id="nextToEducationHistory" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToEducationHistoryAndParse" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
-            <Button fx:id="backToBasicDataWindow1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToBasicDataWindow1" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToEducationHistory" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToEducationHistorySceneAndStoreData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="backToBasicDataWindow1" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToBasicData1Scene" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
             <ImageView fx:id="mapImageView" layoutX="587.0" layoutY="105.0" fitHeight="300.0" fitWidth="300.0" />
             <Label alignment="CENTER_RIGHT" layoutX="717.0" layoutY="80.0" prefHeight="27.0" prefWidth="44.0" text="Map" textAlignment="JUSTIFY" textFill="#004aad">
                <font>

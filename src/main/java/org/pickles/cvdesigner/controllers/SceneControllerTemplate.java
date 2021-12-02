@@ -3,12 +3,13 @@ package org.pickles.cvdesigner.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.Main;
 import org.pickles.cvdesigner.enums.SceneSizes;
 
 import java.io.IOException;
 
-public abstract class ControllerTemplate {
+public abstract class SceneControllerTemplate {
     private static final Stage stage = Main.mainStage;
 
     static void loadScene(String sceneTitle, String resourceName) throws IOException {
@@ -22,4 +23,6 @@ public abstract class ControllerTemplate {
     }
 
     protected abstract boolean validateAll();
+
+    protected abstract String writeDataToJson() throws IOException, ParseException;
 }

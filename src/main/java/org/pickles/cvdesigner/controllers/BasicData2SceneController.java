@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public class BasicDataWindow2Controller extends ControllerTemplate {
+public class BasicData2SceneController extends SceneControllerTemplate {
     public TextField countryTextField;
     public TextField cityTextField;
     public TextField roadTextField;
@@ -34,6 +34,7 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
     public Label roadLabel;
     public Label buildingLabel;
     public Label zipLabel;
+
     public ImageView mapImageView;
 
     public boolean validateCountry() {
@@ -84,6 +85,11 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
                 && this.validateApartment() && this.validateZipCode());
     }
 
+    @Override
+    protected String writeDataToJson() throws IOException, ParseException {
+        return null;
+    }
+
     public void showOnMap(ActionEvent actionEvent) {
         if (!this.validateAll()) {
             new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
@@ -104,13 +110,13 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
         }
     }
 
-    public void goBackToBasicDataWindow1(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_WINDOW_1_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_1_SCENE.value);
+    public void goBackToBasicData1Scene(ActionEvent actionEvent) throws IOException {
+        loadScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
     }
 
-    public void goNextToEducationHistoryAndParse(ActionEvent actionEvent) throws IOException {
+    public void goNextToEducationHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (this.validateAll()) {
-            loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+            loadScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
             Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false,
                     true, InputType.COUNTRY));

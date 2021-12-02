@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
@@ -16,7 +17,7 @@ import org.pickles.cvdesigner.helpers.Validator;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class EmploymentHistoryController extends ControllerTemplate {
+public class EmploymentHistorySceneController extends SceneControllerTemplate {
     public Label companyNameLabel;
     public Label addressLabel;
     public Label nipLabel;
@@ -67,6 +68,11 @@ public class EmploymentHistoryController extends ControllerTemplate {
                 && validateDatesPicked() && validateCompanyName());
     }
 
+    @Override
+    protected String writeDataToJson() throws IOException, ParseException {
+        return null;
+    }
+
     @FXML
     private boolean validateDatesPicked() {
         LocalDate fromDate = fromDatePicker.getValue();
@@ -77,13 +83,13 @@ public class EmploymentHistoryController extends ControllerTemplate {
         } else { return true; }
     }
 
-    public void goBackToEducationHistory(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.EDUCATION_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+    public void goBackToEducationHistoryScene(ActionEvent actionEvent) throws IOException {
+        loadScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
     }
 
-    public void goNextToHardSkillsAndParse(ActionEvent actionEvent) throws IOException {
+    public void goNextToHardSkillsSceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.HARD_SKILLS_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
+            loadScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
         } else {
             Styling.showError(companyNameLabel, Validator.inputValid(companyNameTextField.getText(), false, true, InputType.CAPITALIZED));
             Styling.showError(addressLabel, Validator.inputValid(addressTextField.getText(), false, true, InputType.CAPITALIZED));
