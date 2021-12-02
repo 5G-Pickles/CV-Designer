@@ -49,7 +49,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.BasicDataWindow1Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.BasicData1SceneController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -196,8 +196,8 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToBasicDataWindow2AndParse" style="-fx-background-color: #004AAD;                     -fx-text-fill: #ffff;-fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 9 24;" text="Next" />
-            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextToBasicDataWindow2Button" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToBasicData2SceneAndStoreData" style="-fx-background-color: #004AAD;                     -fx-text-fill: #ffff;-fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="backToStartButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToStartScene" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
             <Label fx:id="otherInfoLabel" alignment="CENTER_RIGHT" layoutX="404.0" layoutY="18.0" prefHeight="27.0" prefWidth="93.0" text="Basic Data" textAlignment="JUSTIFY" textFill="#004aad">
                <font>
                   <Font name="System Bold" size="18.0" />

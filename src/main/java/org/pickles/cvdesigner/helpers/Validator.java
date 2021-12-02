@@ -6,13 +6,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.pickles.cvdesigner.enums.InputType;
 import java.util.regex.Pattern;
 
-
 public abstract class Validator {
     private static final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
     private static final Countries countriesList = new Countries();
 
     private static final Pattern namePattern =
-            Pattern.compile("^\\p{Lu}\\p{Ll}*$", Pattern.UNICODE_CHARACTER_CLASS);
+            Pattern.compile("^(((\\p{Lu}\\p{Ll}+)+)-?)+$", Pattern.UNICODE_CHARACTER_CLASS);
 
     public static boolean inputValid(String text, boolean obligatory, boolean strictCheck, InputType type) {
         if (text == null) { return false; }
