@@ -94,7 +94,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="zipLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -110,29 +110,19 @@
                      </font>
                   </TextField>
                   <TextField fx:id="roadTextField" onKeyReleased="#validateRoad" prefHeight="39.0" prefWidth="266.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                              -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                  <Label fx:id="zipLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad"
-                         GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="zipCodeTextField" onKeyReleased="#validateZipCode" prefHeight="47.0" prefWidth="129.0"
-                             style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;
-                             -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;" GridPane.columnIndex="2"
-                             GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
                   <GridPane fx:id="buildingApartmentGridPane" prefHeight="30.0" prefWidth="238.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="5.0" />
+                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="5.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <TextField fx:id="buildingTextField" onKeyReleased="#validateBuilding" prefHeight="47.0" prefWidth="633.0" style="-fx-border-color: #5989CA; -fx-background-color: #B2C8E6; -fx-border-radius: 10;                                    -fx-background-radius: 10; -fx-border-width: 4; -fx-text-fill: #004aad;">
                            <font>
