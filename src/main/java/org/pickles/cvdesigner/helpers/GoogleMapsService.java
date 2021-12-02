@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class GoogleMapsService {
     private static final JSONParser parser = new JSONParser();
@@ -43,16 +44,25 @@ public class GoogleMapsService {
         JSONObject jsonObject = (JSONObject) parser.parse(geocodingResult);
         return (JSONObject) jsonObject.get("location");
     }
-
-    // TODO: add json parsing of the stored address values - awaiting for storage creation
-    public static String getStaticMapPath() throws IOException, ParseException, InterruptedException, ApiException {
+    public static String getStaticMapPath(String country, String city, String road,
+                                          String building, String apartment, String zipCode)
+            throws IOException, ParseException, InterruptedException, ApiException {
         String apiKey = getApiKey();
+
+        String address = new StringJoiner(", ")
+                .add(country)
+                .add(city)
+                .add(road)
+                .add(building)
+                .add(apartment)
+                .add(zipCode)
+                .toString();
 
         GeoApiContext geoApiContext = new GeoApiContext.Builder().apiKey(apiKey).build();
         GeocodingResult[] geocodingResults = GeocodingApi
-                .geocode(geoApiContext, "Polska, Łódź, ul. Lucjana Rydla 7a").await();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                .geocode(geoApiContext, address).await();
 
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JSONObject latLngJson = getLatLngFromGeocodingResultJson(gson.toJson(geocodingResults[0].geometry));
         LatLng latLng = new LatLng((Double) latLngJson.get("lat"), (Double) latLngJson.get("lng"));
 
