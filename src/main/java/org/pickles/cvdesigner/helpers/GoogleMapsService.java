@@ -34,7 +34,7 @@ public class GoogleMapsService {
         String path = Objects.requireNonNull(Main.class.getResource("api-key.json")).getPath();
         path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         path = new File(path).getPath();
-        pathToTargetResources = path.replace("\\api-key.json", "\\");
+        pathToTargetResources = new File(path).getParent();
         JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(path));
         return (String) jsonObject.get("key");
     }
@@ -45,12 +45,14 @@ public class GoogleMapsService {
     }
 
     // TODO: add json parsing of the stored address values - awaiting for storage creation
-    public static String getStaticMap() throws IOException, ParseException, InterruptedException, ApiException {
+    public static String getStaticMapPath() throws IOException, ParseException, InterruptedException, ApiException {
         String apiKey = getApiKey();
+
         GeoApiContext geoApiContext = new GeoApiContext.Builder().apiKey(apiKey).build();
         GeocodingResult[] geocodingResults = GeocodingApi
                 .geocode(geoApiContext, "Polska, Łódź, ul. Lucjana Rydla 7a").await();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
         JSONObject latLngJson = getLatLngFromGeocodingResultJson(gson.toJson(geocodingResults[0].geometry));
         LatLng latLng = new LatLng((Double) latLngJson.get("lat"), (Double) latLngJson.get("lng"));
 
@@ -69,12 +71,13 @@ public class GoogleMapsService {
                 .zoom(18)
                 .await();
 
-        ByteArrayInputStream bis = new ByteArrayInputStream(imageResult.imageData);
-        BufferedImage image = ImageIO.read(bis);
-        ImageIO.write(image, "png", new File(pathToTargetResources + "map.png"));
-
         geoApiContext.shutdown();
 
-        return pathToTargetResources + "map.png";
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageResult.imageData);
+        BufferedImage image = ImageIO.read(bis);
+        File imageFile = new File(pathToTargetResources, "map.png");
+        ImageIO.write(image, "png", imageFile);
+
+        return imageFile.getPath();
     }
 }

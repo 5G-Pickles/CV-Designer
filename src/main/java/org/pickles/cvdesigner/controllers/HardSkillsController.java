@@ -26,12 +26,17 @@ public class HardSkillsController extends ControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
+    @Override
+    protected boolean validateAll() {
+        return validateTopic();
+    }
+
     public void goBackToEmploymentHistory(ActionEvent actionEvent) throws IOException {
         loadScene(SceneTitles.EMPLOYMENT_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
     }
 
     public void goNextToSoftSkillsAndParse(ActionEvent actionEvent) throws IOException {
-        if (validateTopic()) {
+        if (validateAll()) {
             loadScene(SceneTitles.SOFT_SKILLS_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
