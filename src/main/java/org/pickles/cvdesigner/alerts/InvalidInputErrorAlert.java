@@ -1,10 +1,10 @@
-package org.pickles.cvdesigner.helpers;
+package org.pickles.cvdesigner.alerts;
 
 import javafx.scene.control.Alert;
 
-public class InvalidInputAlert extends Alert {
-    public InvalidInputAlert(AlertType alertType) {
-        super(alertType);
+public class InvalidInputErrorAlert extends Alert {
+    public InvalidInputErrorAlert() {
+        super(AlertType.ERROR);
         this.setHeaderText("Input not valid");
         this.setContentText("Please make sure all fields are filled-in appropriately");
     }
