@@ -4,10 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.pickles.cvdesigner.enums.SceneSizes;
 
 import java.io.IOException;
-
-import org.pickles.cvdesigner.enums.SceneSizes;
 
 public class Main extends Application {
 
