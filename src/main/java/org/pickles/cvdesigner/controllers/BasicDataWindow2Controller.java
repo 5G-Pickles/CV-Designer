@@ -9,16 +9,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.Main;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.GoogleMapsService;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
-import org.pickles.cvdesigner.helpers.Styling;
-import org.pickles.cvdesigner.helpers.Validator;
+import org.pickles.cvdesigner.helpers.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class BasicDataWindow2Controller extends ControllerTemplate {
     public TextField countryTextField;
@@ -94,8 +93,14 @@ public class BasicDataWindow2Controller extends ControllerTemplate {
         try {
             String pathToMapImage = GoogleMapsService.getStaticMapPath();
             mapImageView.setImage(new Image(String.valueOf(new File(pathToMapImage).toURI().toURL())));
-        } catch (IOException | InterruptedException | ApiException | ParseException e) {
-            e.printStackTrace();
+        } catch (IOException | ParseException e) {
+            new MapLoadingUnknownErrorAlert(Alert.AlertType.ERROR).showAndWait();
+            mapImageView.setImage(new Image(Objects.requireNonNull(Main.class.
+                    getResource("couldNotLoadMap.png")).getPath()));
+        } catch (InterruptedException | ApiException e) {
+            new MapLoadingConnectionErrorAlert(Alert.AlertType.ERROR).showAndWait();
+            mapImageView.setImage(new Image(Objects.requireNonNull(Main.class.
+                    getResource("couldNotLoadMap.png")).getPath()));
         }
     }
 

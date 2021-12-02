@@ -6,7 +6,6 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.pickles.cvdesigner.enums.InputType;
 import java.util.regex.Pattern;
 
-
 public abstract class Validator {
     private static final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
     private static final Countries countriesList = new Countries();
