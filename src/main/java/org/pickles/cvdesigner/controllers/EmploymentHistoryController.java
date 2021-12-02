@@ -61,6 +61,12 @@ public class EmploymentHistoryController extends ControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
+    @Override
+    protected boolean validateAll() {
+        return (validateAddress() && validateNip() && validatePosition()
+                && validateDatesPicked() && validateCompanyName());
+    }
+
     @FXML
     private boolean validateDatesPicked() {
         LocalDate fromDate = fromDatePicker.getValue();
@@ -76,7 +82,7 @@ public class EmploymentHistoryController extends ControllerTemplate {
     }
 
     public void goNextToHardSkillsAndParse(ActionEvent actionEvent) throws IOException {
-        if (validateCompanyName() && validateAddress() && validateNip()&&validatePosition()&&validateDatesPicked()) {
+        if (validateAll()) {
             loadScene(SceneTitles.HARD_SKILLS_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
         } else {
             Styling.showError(companyNameLabel, Validator.inputValid(companyNameTextField.getText(), false, true, InputType.CAPITALIZED));

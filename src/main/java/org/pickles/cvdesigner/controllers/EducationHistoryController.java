@@ -59,6 +59,12 @@ public class EducationHistoryController extends ControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
+    @Override
+    protected boolean validateAll() {
+        return (validateCountry() && validateDegree() && validateDatesPicked() &&
+                validateCountry() && validateSchoolName() && validateFieldOfStudy());
+    }
+
     public void goBackToBasicDataWindow2(ActionEvent actionEvent) throws IOException {
         loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
     }
@@ -74,7 +80,7 @@ public class EducationHistoryController extends ControllerTemplate {
     }
 
     public void goNextToEmploymentHistoryAndParse(ActionEvent actionEvent) throws IOException {
-        if (validateSchoolName()&&validateCountry()&&validateFieldOfStudy()&&validateDegree()&& validateDatesPicked()) {
+        if (validateAll()) {
             loadScene(SceneTitles.EMPLOYMENT_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
             Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));

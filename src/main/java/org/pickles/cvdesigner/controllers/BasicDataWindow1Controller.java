@@ -68,6 +68,11 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         return !this.getSexRadioButtonSelected().isEmpty();
     }
 
+    @Override
+    protected boolean validateAll() {
+        return (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton());
+    }
+
     public String getSexRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
         if (selectedRadioButton != null) {
@@ -80,7 +85,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
     }
 
     public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
-        if (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton()) {
+        if (this.validateAll()) {
             loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
         } else {
             Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),

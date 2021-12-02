@@ -20,6 +20,6 @@ module org.pickles.cvdesigner {
 
     opens org.pickles.cvdesigner to javafx.fxml;
     exports org.pickles.cvdesigner;
-    exports org.pickles.cvdesigner.controllers;
-    opens org.pickles.cvdesigner.controllers to javafx.fxml;
+//    exports org.pickles.cvdesigner.controllers;
+//    opens org.pickles.cvdesigner.controllers to javafx.fxml;
 }

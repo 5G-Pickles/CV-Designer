@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public abstract class ControllerTemplate {
     private static final Stage stage = Main.mainStage;
+
     static void loadScene(String sceneTitle, String resourceName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(resourceName));
         Scene scene = new Scene(fxmlLoader.load(),
@@ -19,4 +20,6 @@ public abstract class ControllerTemplate {
         stage.setScene(scene);
         stage.show();
     }
+
+    protected abstract boolean validateAll();
 }

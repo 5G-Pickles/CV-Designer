@@ -24,8 +24,13 @@ public class OtherInfoController extends ControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
+    @Override
+    protected boolean validateAll() {
+        return validateOtherInfo();
+    }
+
     public void goBackToSoftSkills(ActionEvent actionEvent) throws IOException {
-        if (validateOtherInfo()) {
+        if (validateAll()) {
             loadScene(SceneTitles.SOFT_SKILLS_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(otherInfoLabel, Validator.inputValid(otherInfoTextArea.getText(), false, true, InputType.CAPITALIZED));

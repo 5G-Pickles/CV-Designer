@@ -13,4 +13,9 @@ public class StartSceneController extends ControllerTemplate {
     private void goStart(ActionEvent actionEvent) throws IOException {
         loadScene(SceneTitles.BASIC_DATA_WINDOW_1_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_1_SCENE.value);
     }
+
+    @Override
+    protected boolean validateAll() {
+        return true;
+    }
 }

@@ -34,7 +34,7 @@ public class GoogleMapsService {
         String path = Objects.requireNonNull(Main.class.getResource("api-key.json")).getPath();
         path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         path = new File(path).getPath();
-        pathToTargetResources = path.replace("\\api-key.json", "\\");
+        pathToTargetResources = new File(path).getParent();
         JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(path));
         return (String) jsonObject.get("key");
     }
@@ -75,8 +75,9 @@ public class GoogleMapsService {
 
         ByteArrayInputStream bis = new ByteArrayInputStream(imageResult.imageData);
         BufferedImage image = ImageIO.read(bis);
-        ImageIO.write(image, "png", new File(pathToTargetResources + "map.png"));
+        File imageFile = new File(pathToTargetResources, "map.png");
+        ImageIO.write(image, "png", imageFile);
 
-        return pathToTargetResources + "map.png";
+        return imageFile.getPath();
     }
 }
