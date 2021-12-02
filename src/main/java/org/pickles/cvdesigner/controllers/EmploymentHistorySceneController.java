@@ -10,7 +10,7 @@ import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -99,7 +99,7 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
             Styling.showError(fromDateLabel, validateDatesPicked());
             Styling.showError(toDateLabel, validateDatesPicked());
 
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }

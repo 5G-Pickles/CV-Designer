@@ -7,10 +7,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -88,6 +89,11 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
 
     public void goNextToEmploymentHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
+            try {
+                writeDataToJson();
+            } catch (ParseException e) {
+                new StorageWriteErrorAlert();
+            }
             loadScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
             Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
@@ -98,7 +104,7 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
             Styling.showError(fromDateLabel, validateDatesPicked());
             Styling.showError(toDateLabel, validateDatesPicked());
 
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }

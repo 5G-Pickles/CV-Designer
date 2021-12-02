@@ -9,7 +9,7 @@ import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -48,7 +48,7 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
             loadScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }

@@ -9,13 +9,24 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 
 public abstract class JsonStorageTemplate {
-    private final String sceneName;
+    private static String sceneName;
     private final JSONObject jsonObjectSubData;
     private final JSONParser jsonParser = new JSONParser();
 
     public JsonStorageTemplate(String sceneName) {
-        this.sceneName = sceneName;
+        JsonStorageTemplate.sceneName = sceneName;
         jsonObjectSubData = new JSONObject();
+    }
+
+    public static JSONObject getSceneDataFromStorage() throws IOException, ParseException {
+        File storageFile = new File(getPathToStorage());
+        if (!storageFile.exists()) {
+            return new JSONObject();
+        }
+
+        FileReader storageFileReader = new FileReader(storageFile);
+        JSONObject jsonObjectRoot = (JSONObject) new JSONParser().parse(storageFileReader);
+        return (JSONObject) jsonObjectRoot.get(sceneName);
     }
 
     public static String getPathToStorage() {

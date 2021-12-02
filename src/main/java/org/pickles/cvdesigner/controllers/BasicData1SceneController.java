@@ -5,10 +5,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 import org.pickles.cvdesigner.storage.BasicData1SceneJsonStorage;
@@ -37,7 +38,6 @@ public class BasicData1SceneController extends SceneControllerTemplate {
     public Button nextToBasicDataWindow2Button;
 
     public ToggleGroup sexRadioButtonToggleGroup;
-
 
     public boolean validateName() {
         String value = nameTextField.getText();
@@ -98,9 +98,13 @@ public class BasicData1SceneController extends SceneControllerTemplate {
         loadScene(SceneTitles.START_SCENE_TITLE.value, ScenePaths.START_SCENE.value);
     }
 
-    public void goNextToBasicData2SceneAndStoreData(ActionEvent actionEvent) throws IOException, ParseException {
+    public void goNextToBasicData2SceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (this.validateAll()) {
-            writeDataToJson();
+            try {
+                writeDataToJson();
+            } catch (ParseException e) {
+                new StorageWriteErrorAlert();
+            }
             loadScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
         } else {
             Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),
@@ -113,7 +117,7 @@ public class BasicData1SceneController extends SceneControllerTemplate {
                     false, true, InputType.TELEPHONE));
             Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
                     true, true, InputType.SEX));
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }
