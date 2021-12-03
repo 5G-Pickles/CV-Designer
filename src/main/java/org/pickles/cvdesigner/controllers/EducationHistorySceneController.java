@@ -8,12 +8,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
+import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
 import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
+import org.pickles.cvdesigner.helpers.LocalDateFormatter;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
+import org.pickles.cvdesigner.storage.EducationHistorySceneJsonStorage;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -75,8 +78,9 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     @Override
-    protected void loadData(ActionEvent actionEvent) {
-
+    protected void loadData(ActionEvent actionEvent) throws IOException, ParseException {
+        EducationHistorySceneJsonStorage sceneJsonStorage = new EducationHistorySceneJsonStorage();
+        fromStorageData = sceneJsonStorage.getDataFromStorage();
     }
 
     @Override
@@ -87,7 +91,15 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
 
     @Override
     protected String writeDataToJson() throws IOException, ParseException {
-        return null;
+        EducationHistorySceneJsonStorage jsonStorage = new EducationHistorySceneJsonStorage();
+        jsonStorage.writePartialDataToSubJson(schoolNameTextField.getId(), schoolNameTextField.getText());
+        jsonStorage.writePartialDataToSubJson(countryTextField.getId(), countryTextField.getText());
+        jsonStorage.writePartialDataToSubJson(fieldOfStudyTextField.getId(), fieldOfStudyTextField.getText());
+        jsonStorage.writePartialDataToSubJson(degreeTextField.getId(), degreeTextField.getText());
+
+        jsonStorage.writePartialDataToSubJson(fromDatePicker.getId(),LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
+        jsonStorage.writePartialDataToSubJson(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+        return jsonStorage.writeToJsonStorage();
     }
 
     public void goBackToBasicData2Scene(ActionEvent actionEvent) throws IOException {
@@ -116,7 +128,23 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goLoadDataEducationHistoryScene(ActionEvent actionEvent) {
-        this.loadData(actionEvent);
+        try {
+            this.loadData(actionEvent);
+            if (fromStorageData == null) {
+                new StorageNoDataInfoAlert();
+                return;
+            }
+
+            schoolNameTextField.setText((String) fromStorageData.get(schoolNameTextField.getId()));
+            countryTextField.setText((String) fromStorageData.get(countryTextField.getId()));
+            fieldOfStudyTextField.setText((String) fromStorageData.get(fieldOfStudyTextField.getId()));
+            degreeTextField.setText((String) fromStorageData.get(degreeTextField.getId()));
+
+            fromDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(fromDatePicker.getId())));
+            toDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(toDatePicker.getId())));
+        } catch(IOException | ParseException e) {
+            new StorageNoDataInfoAlert();
+        }
     }
 
     public void goAddToEducationHistoryListView(ActionEvent actionEvent) {
