@@ -191,6 +191,10 @@ public class BasicData2SceneController extends SceneControllerTemplate {
     public void goLoadDataBasicData2Scene(ActionEvent actionEvent) {
         try {
             this.loadData(actionEvent);
+            if (fromStorageData == null) {
+                new StorageNoDataInfoAlert();
+                return;
+            }
             countryTextField.setText((String) fromStorageData.get(countryTextField.getId()));
             cityTextField.setText((String) fromStorageData.get(cityTextField.getId()));
             roadTextField.setText((String) fromStorageData.get(roadTextField.getId()));
