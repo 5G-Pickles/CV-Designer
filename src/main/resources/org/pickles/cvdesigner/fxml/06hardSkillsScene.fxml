@@ -151,7 +151,7 @@
             <Button fx:id="nextToSoftSkills" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToSoftSkillsSceneAndStoreData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
             <Button fx:id="backToEmploymentHistory" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToEmploymentHistoryScene" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
             <CharmListView fx:id="hardSkillsCharmListView" layoutX="14.0" layoutY="53.0" prefHeight="508.0" prefWidth="248.0" style="-fx-background-color: #B2C8E6; -fx-border-color: #5989CA; -fx-border-radius: 10;                            -fx-background-radius: 10;" />
-            <Label fx:id="otherInfoLabel" alignment="CENTER_RIGHT" layoutX="406.0" layoutY="18.0" prefHeight="27.0" prefWidth="88.0" text="Hard skills" textAlignment="JUSTIFY" textFill="#004aad">
+            <Label fx:id="sceneInfoLabel" alignment="CENTER_RIGHT" layoutX="406.0" layoutY="18.0" prefHeight="27.0" prefWidth="88.0" text="Hard skills" textAlignment="JUSTIFY" textFill="#004aad">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
