@@ -31,7 +31,7 @@ public class GoogleMapsService {
 
     private static String pathToTargetResources;
 
-    private static String getApiKey() throws IOException, ParseException {
+    private static String getApiKey() throws NullPointerException, IOException, ParseException {
         String path = Objects.requireNonNull(Main.class.getResource("api-key.json")).getPath();
         path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         path = new File(path).getPath();
@@ -44,9 +44,10 @@ public class GoogleMapsService {
         JSONObject jsonObject = (JSONObject) parser.parse(geocodingResult);
         return (JSONObject) jsonObject.get("location");
     }
+
     public static String getStaticMapPath(String country, String city, String road,
                                           String building, String apartment, String zipCode)
-            throws IOException, ParseException, InterruptedException, ApiException {
+            throws NullPointerException, IOException, ParseException, InterruptedException, ApiException {
         String apiKey = getApiKey();
 
         String address = new StringJoiner(", ")
@@ -66,15 +67,20 @@ public class GoogleMapsService {
         JSONObject latLngJson = getLatLngFromGeocodingResultJson(gson.toJson(geocodingResults[0].geometry));
         LatLng latLng = new LatLng((Double) latLngJson.get("lat"), (Double) latLngJson.get("lng"));
 
+        String path = Objects.requireNonNull(Main.class.getResource("map/mapMarker.png")).getPath();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+        path = new File(path).getPath();
         StaticMapsRequest.Markers markers = new StaticMapsRequest.Markers();
+        markers.customIcon(String.valueOf(new File(path).toURI().toURL()),
+                StaticMapsRequest.Markers.CustomIconAnchor.bottom, 4);
         markers.addLocation(latLng);
-        markers.size(StaticMapsRequest.Markers.MarkersSize.small);
+        markers.size(StaticMapsRequest.Markers.MarkersSize.normal);
 
         StaticMapsRequest staticMapsRequest = new StaticMapsRequest(geoApiContext);
         ImageResult imageResult = staticMapsRequest
+                .markers(markers)
                 .center(latLng)
                 .maptype(StaticMapsRequest.StaticMapType.hybrid)
-                .markers(markers)
                 .visible(latLng)
                 .size(new Size(1400, 1400))
                 .scale(2)

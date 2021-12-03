@@ -5,11 +5,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
+import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
 import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 import org.pickles.cvdesigner.storage.BasicData1SceneJsonStorage;
@@ -79,6 +80,12 @@ public class BasicData1SceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void loadData(ActionEvent actionEvent) throws IOException, ParseException {
+        BasicData1SceneJsonStorage sceneJsonStorage = new BasicData1SceneJsonStorage();
+        fromStorageData = sceneJsonStorage.getDataFromStorage();
+    }
+
+    @Override
     protected boolean validateAll() {
         return (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton());
     }
@@ -92,6 +99,30 @@ public class BasicData1SceneController extends SceneControllerTemplate {
         sceneJsonStorage.writePartialDataToSubJson(emailTextField.getId(), emailTextField.getText());
         sceneJsonStorage.writePartialDataToSubJson("sexRadioButtonToggleGroup", getSexRadioButtonSelected());
         return sceneJsonStorage.writeToJsonStorage();
+    }
+
+    public void goLoadDataBasicData1Scene(ActionEvent actionEvent) {
+        try {
+            this.loadData(actionEvent);
+            nameTextField.setText((String) fromStorageData.get(nameTextField.getId()));
+            surnameTextField.setText((String) fromStorageData.get(surnameTextField.getId()));
+            telephoneTextField.setText((String) fromStorageData.get(telephoneTextField.getId()));
+            emailTextField.setText((String) fromStorageData.get(emailTextField.getId()));
+            String sex = (String) fromStorageData.get("sexRadioButtonToggleGroup");
+            String male = maleRadioButton.getText();
+            String female = femaleRadioButton.getText();
+            if (sex.equals(male)) {
+                sexRadioButtonToggleGroup.selectToggle(maleRadioButton);
+            }
+            if (sex.equals(female)) {
+                sexRadioButtonToggleGroup.selectToggle(femaleRadioButton);
+            }
+            if (!sex.equals(male) && !sex.equals(female)) {
+                sexRadioButtonToggleGroup.selectToggle(otherRadioButton);
+            }
+        } catch (IOException | ParseException e) {
+            new StorageNoDataInfoAlert();
+        }
     }
 
     public void goBackToStartScene(ActionEvent actionEvent) throws IOException {

@@ -85,6 +85,7 @@
       <children>
             <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
             <Button fx:id="nextButton" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNext" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="loadDataButton" layoutX="782.0" layoutY="14.0" mnemonicParsing="false" onAction="#goLoadData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Load data" />
       </children>
     </AnchorPane>
   </children>
