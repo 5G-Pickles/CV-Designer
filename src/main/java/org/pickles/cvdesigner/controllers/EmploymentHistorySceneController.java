@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -31,6 +32,8 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
 
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
+
+    public ListView employmentHistoryListView;
 
 
     public boolean validateCompanyName() {
@@ -59,6 +62,11 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
         Styling.showError(positionLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
+    }
+
+    @Override
+    protected void loadData(ActionEvent actionEvent) {
+
     }
 
     @Override
@@ -100,5 +108,13 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
 
             new InvalidInputErrorAlert().showAndWait();
         }
+    }
+
+    public void goLoadDataEmploymentHistoryScene(ActionEvent actionEvent) {
+        this.loadData(actionEvent);
+    }
+
+    public void goAddToEmploymentHistoryListView(ActionEvent actionEvent) {
+
     }
 }

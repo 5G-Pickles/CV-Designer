@@ -18,7 +18,7 @@ public abstract class JsonStorageTemplate {
         jsonObjectSubData = new JSONObject();
     }
 
-    public static JSONObject getSceneDataFromStorage() throws IOException, ParseException {
+    public JSONObject getDataFromStorage() throws IOException, ParseException {
         File storageFile = new File(getPathToStorage());
         if (!storageFile.exists()) {
             return new JSONObject();

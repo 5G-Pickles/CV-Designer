@@ -1,5 +1,6 @@
 package org.pickles.cvdesigner.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import org.json.simple.JSONObject;
@@ -15,7 +16,7 @@ import static org.pickles.cvdesigner.Main.scene;
 import static org.pickles.cvdesigner.Main.mainStage;
 
 public abstract class SceneControllerTemplate {
-    public static JSONObject onLoadData;
+    public static JSONObject fromStorageData;
 
     protected static void loadNextScene(String sceneTitle, String resourceName) throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource(resourceName));
@@ -27,9 +28,7 @@ public abstract class SceneControllerTemplate {
         mainStage.show();
     }
 
-    protected static void goLoadData(JsonStorageTemplate jsonStorageTemplate) throws IOException, ParseException {
-        onLoadData = jsonStorageTemplate.getSceneDataFromStorage();
-    };
+    protected abstract void loadData(ActionEvent actionEvent) throws IOException, ParseException;
 
     protected abstract boolean validateAll();
 

@@ -4,13 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
@@ -32,6 +33,8 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
 
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
+
+    public ListView educationHistoryListView;
 
     public boolean validateSchoolName() {
         String text = schoolNameTextField.getText();
@@ -72,6 +75,11 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void loadData(ActionEvent actionEvent) {
+
+    }
+
+    @Override
     protected boolean validateAll() {
         return (validateCountry() && validateDegree() && validateDatesPicked() &&
                 validateCountry() && validateSchoolName() && validateFieldOfStudy());
@@ -105,5 +113,13 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
 
             new InvalidInputErrorAlert().showAndWait();
         }
+    }
+
+    public void goLoadDataEducationHistoryScene(ActionEvent actionEvent) {
+        this.loadData(actionEvent);
+    }
+
+    public void goAddToEducationHistoryListView(ActionEvent actionEvent) {
+
     }
 }
