@@ -31,7 +31,7 @@ public class GoogleMapsService {
 
     private static String pathToTargetResources;
 
-    private static String getApiKey() throws IOException, ParseException {
+    private static String getApiKey() throws NullPointerException, IOException, ParseException {
         String path = Objects.requireNonNull(Main.class.getResource("api-key.json")).getPath();
         path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         path = new File(path).getPath();
@@ -44,9 +44,10 @@ public class GoogleMapsService {
         JSONObject jsonObject = (JSONObject) parser.parse(geocodingResult);
         return (JSONObject) jsonObject.get("location");
     }
+
     public static String getStaticMapPath(String country, String city, String road,
                                           String building, String apartment, String zipCode)
-            throws IOException, ParseException, InterruptedException, ApiException {
+            throws NullPointerException, IOException, ParseException, InterruptedException, ApiException {
         String apiKey = getApiKey();
 
         String address = new StringJoiner(", ")

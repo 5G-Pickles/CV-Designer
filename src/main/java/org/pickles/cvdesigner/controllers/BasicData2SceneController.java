@@ -127,8 +127,10 @@ public class BasicData2SceneController extends SceneControllerTemplate {
                     (String) onLoadData.get(zipCodeTextField.getId())
             );
             mapImageView.setImage(new Image(String.valueOf(new File(pathToMapImage).toURI().toURL())));
-        } catch (IOException | ParseException e) {
+        } catch (NullPointerException | IOException | ParseException e) {
             new MapLoadingUnknownErrorAlert().showAndWait();
+            System.out.println(Objects.requireNonNull(Main.class.
+                    getResource("couldNotLoadMap.png")).getPath());
             mapImageView.setImage(new Image(Objects.requireNonNull(Main.class.
                     getResource("couldNotLoadMap.png")).getPath()));
         } catch (InterruptedException | ApiException e) {
