@@ -2,7 +2,6 @@ package org.pickles.cvdesigner.controllers;
 
 import com.google.maps.errors.ApiException;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,11 +13,16 @@ import org.pickles.cvdesigner.alerts.*;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.*;
+import org.pickles.cvdesigner.helpers.GoogleMapsService;
+import org.pickles.cvdesigner.helpers.Styling;
+import org.pickles.cvdesigner.helpers.Validator;
 import org.pickles.cvdesigner.storage.BasicData2SceneJsonStorage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class BasicData2SceneController extends SceneControllerTemplate {
@@ -82,6 +86,12 @@ public class BasicData2SceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void loadData(ActionEvent actionEvent) throws IOException, ParseException {
+        BasicData2SceneJsonStorage sceneJsonStorage = new BasicData2SceneJsonStorage();
+        fromStorageData = sceneJsonStorage.getDataFromStorage();
+    }
+
+    @Override
     protected boolean validateAll() {
         return (this.validateCountry() && this.validateCity() && this.validateRoad() && this.validateBuilding()
                 && this.validateApartment() && this.validateZipCode());
@@ -112,31 +122,39 @@ public class BasicData2SceneController extends SceneControllerTemplate {
         }
 
         try {
-            onLoadData = BasicData2SceneJsonStorage.getSceneDataFromStorage();
+            BasicData2SceneJsonStorage sceneJsonStorage = new BasicData2SceneJsonStorage();
+            fromStorageData = sceneJsonStorage.getDataFromStorage();
         } catch (ParseException | IOException e) {
             new StorageReadErrorAlert();
         }
 
         try {
             String pathToMapImage = GoogleMapsService.getStaticMapPath(
-                    (String) onLoadData.get(countryTextField.getId()),
-                    (String) onLoadData.get(cityTextField.getId()),
-                    (String) onLoadData.get(roadTextField.getId()),
-                    (String) onLoadData.get(buildingTextField.getId()),
-                    (String) onLoadData.get(apartmentTextField.getId()),
-                    (String) onLoadData.get(zipCodeTextField.getId())
+                    (String) fromStorageData.get(countryTextField.getId()),
+                    (String) fromStorageData.get(cityTextField.getId()),
+                    (String) fromStorageData.get(roadTextField.getId()),
+                    (String) fromStorageData.get(buildingTextField.getId()),
+                    (String) fromStorageData.get(apartmentTextField.getId()),
+                    (String) fromStorageData.get(zipCodeTextField.getId())
             );
             mapImageView.setImage(new Image(String.valueOf(new File(pathToMapImage).toURI().toURL())));
         } catch (NullPointerException | IOException | ParseException e) {
             new MapLoadingUnknownErrorAlert().showAndWait();
-            System.out.println(Objects.requireNonNull(Main.class.
-                    getResource("couldNotLoadMap.png")).getPath());
-            mapImageView.setImage(new Image(Objects.requireNonNull(Main.class.
-                    getResource("couldNotLoadMap.png")).getPath()));
+            setMapLoadErrorImage();
         } catch (InterruptedException | ApiException e) {
             new MapLoadingConnectionErrorAlert().showAndWait();
-            mapImageView.setImage(new Image(Objects.requireNonNull(Main.class.
-                    getResource("couldNotLoadMap.png")).getPath()));
+            setMapLoadErrorImage();
+        }
+    }
+
+    private void setMapLoadErrorImage() {
+        String path = Objects.requireNonNull(Main.class.getResource("map/mapLoadError.png")).getPath();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+        path = new File(path).toString();
+        try {
+            mapImageView.setImage(new Image(String.valueOf(new File(path).toURI().toURL())));
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -167,6 +185,20 @@ public class BasicData2SceneController extends SceneControllerTemplate {
                     false, null));
 
             new InvalidInputErrorAlert().showAndWait();
+        }
+    }
+
+    public void goLoadDataBasicData2Scene(ActionEvent actionEvent) {
+        try {
+            this.loadData(actionEvent);
+            countryTextField.setText((String) fromStorageData.get(countryTextField.getId()));
+            cityTextField.setText((String) fromStorageData.get(cityTextField.getId()));
+            roadTextField.setText((String) fromStorageData.get(roadTextField.getId()));
+            buildingTextField.setText((String) fromStorageData.get(buildingTextField.getId()));
+            apartmentTextField.setText((String) fromStorageData.get(apartmentTextField.getId()));
+            zipCodeTextField.setText((String) fromStorageData.get(zipCodeTextField.getId()));
+        } catch (IOException | ParseException e) {
+            new StorageNoDataInfoAlert();
         }
     }
 }

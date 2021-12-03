@@ -67,15 +67,20 @@ public class GoogleMapsService {
         JSONObject latLngJson = getLatLngFromGeocodingResultJson(gson.toJson(geocodingResults[0].geometry));
         LatLng latLng = new LatLng((Double) latLngJson.get("lat"), (Double) latLngJson.get("lng"));
 
+        String path = Objects.requireNonNull(Main.class.getResource("map/mapMarker.png")).getPath();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
+        path = new File(path).getPath();
         StaticMapsRequest.Markers markers = new StaticMapsRequest.Markers();
+        markers.customIcon(String.valueOf(new File(path).toURI().toURL()),
+                StaticMapsRequest.Markers.CustomIconAnchor.bottom, 4);
         markers.addLocation(latLng);
-        markers.size(StaticMapsRequest.Markers.MarkersSize.small);
+        markers.size(StaticMapsRequest.Markers.MarkersSize.normal);
 
         StaticMapsRequest staticMapsRequest = new StaticMapsRequest(geoApiContext);
         ImageResult imageResult = staticMapsRequest
+                .markers(markers)
                 .center(latLng)
                 .maptype(StaticMapsRequest.StaticMapType.hybrid)
-                .markers(markers)
                 .visible(latLng)
                 .size(new Size(1400, 1400))
                 .scale(2)
