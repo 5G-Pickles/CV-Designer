@@ -96,8 +96,8 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <DatePicker fx:id="fromDatePicker" prefHeight="25.0" prefWidth="389.0" style="-fx-border-radius: 10;                   -fx-background-radius: 10; -fx-border-color: #5989CA; -fx-border-width: 4; -fx-background-color: #B2C8E6;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <DatePicker fx:id="toDatePicker" prefHeight="25.0" prefWidth="389.0" style="-fx-border-radius: 10;                   -fx-background-radius: 10; -fx-border-color: #5989CA; -fx-border-width: 4; -fx-background-color: #B2C8E6;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <DatePicker fx:id="fromDatePicker" editable="false" prefHeight="25.0" prefWidth="389.0" style="-fx-border-radius: 10;                   -fx-background-radius: 10; -fx-border-color: #5989CA; -fx-border-width: 4; -fx-background-color: #B2C8E6;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="toDatePicker" editable="false" prefHeight="25.0" prefWidth="389.0" style="-fx-border-radius: 10;                   -fx-background-radius: 10; -fx-border-color: #5989CA; -fx-border-width: 4; -fx-background-color: #B2C8E6;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                   <Label fx:id="fromDateLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="From:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
