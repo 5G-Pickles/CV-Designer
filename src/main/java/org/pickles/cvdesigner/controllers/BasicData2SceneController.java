@@ -159,7 +159,7 @@ public class BasicData2SceneController extends SceneControllerTemplate {
     }
 
     public void goBackToBasicData1Scene(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
+        loadNextScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
     }
 
     public void goNextToEducationHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -169,7 +169,7 @@ public class BasicData2SceneController extends SceneControllerTemplate {
             } catch (ParseException e) {
                 new StorageWriteErrorAlert();
             }
-            loadScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+            loadNextScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
             Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false,
                     true, InputType.COUNTRY));

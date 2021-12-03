@@ -47,12 +47,12 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goBackToEmploymentHistoryScene(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
+        loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
     }
 
     public void goNextToSoftSkillsSceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
+            loadNextScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputErrorAlert().showAndWait();

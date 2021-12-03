@@ -41,7 +41,7 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
 
     public void goBackToSoftSkillsScene(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
+            loadNextScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(otherInfoLabel, Validator.inputValid(otherInfoTextArea.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputErrorAlert().showAndWait();

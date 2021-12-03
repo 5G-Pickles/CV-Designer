@@ -44,12 +44,12 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goBackToHardSkillsScene(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
+        loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
     }
 
     public void goNextToOtherInfoSceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
+            loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
         } else {
             Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputErrorAlert().showAndWait();
