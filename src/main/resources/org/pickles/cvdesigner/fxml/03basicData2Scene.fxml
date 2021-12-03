@@ -161,7 +161,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="otherInfoLabel" alignment="CENTER_RIGHT" layoutX="404.0" layoutY="14.0" prefHeight="27.0" prefWidth="93.0" text="Basic data" textAlignment="JUSTIFY" textFill="#004aad">
+            <Label fx:id="sceneInfoLabel" alignment="CENTER_RIGHT" layoutX="404.0" layoutY="14.0" prefHeight="27.0" prefWidth="93.0" text="Basic data 2/2" textAlignment="JUSTIFY" textFill="#004aad">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

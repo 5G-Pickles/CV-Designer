@@ -1,7 +1,6 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import org.json.simple.parser.ParseException;
@@ -37,7 +36,7 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
 
     public void goBackToSoftSkillsScene(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
+            loadNextScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(otherInfoLabel, Validator.inputValid(otherInfoTextArea.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputErrorAlert().showAndWait();

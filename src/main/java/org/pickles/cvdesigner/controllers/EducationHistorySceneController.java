@@ -2,7 +2,6 @@ package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -84,7 +83,7 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goBackToBasicData2Scene(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
+        loadNextScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
     }
 
     public void goNextToEmploymentHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -94,7 +93,7 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
             } catch (ParseException e) {
                 new StorageWriteErrorAlert();
             }
-            loadScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
+            loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
             Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
             Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));

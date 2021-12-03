@@ -1,7 +1,6 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.json.simple.parser.ParseException;
@@ -37,12 +36,12 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goBackToHardSkillsScene(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
+        loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
     }
 
     public void goNextToOtherInfoSceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
+            loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
         } else {
             Styling.showError(topicLabel, Validator.inputValid(topicTextField.getText(), false, true, InputType.CAPITALIZED));
             new InvalidInputErrorAlert().showAndWait();
