@@ -4,16 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
+import org.pickles.cvdesigner.storage.BasicData1SceneJsonStorage;
 
 import java.io.IOException;
 
-public class BasicDataWindow1Controller extends ControllerTemplate {
+public class BasicData1SceneController extends SceneControllerTemplate {
     public GridPane basicInfoGridPane;
 
     public Label nameLabel;
@@ -33,8 +36,8 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
 
     public Button backToStartButton;
     public Button nextToBasicDataWindow2Button;
-    public ToggleGroup sexRadioButtonToggleGroup;
 
+    public ToggleGroup sexRadioButtonToggleGroup;
 
     public boolean validateName() {
         String value = nameTextField.getText();
@@ -64,6 +67,13 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         return Validator.inputValid(value, true, true, InputType.EMAIL);
     }
 
+    public String getSexRadioButtonSelected() {
+        RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
+        if (selectedRadioButton != null) {
+            return selectedRadioButton.getText();
+        } else { return ""; }
+    }
+
     public boolean validateSexRadioButton() {
         return !this.getSexRadioButtonSelected().isEmpty();
     }
@@ -73,20 +83,29 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
         return (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton());
     }
 
-    public String getSexRadioButtonSelected() {
-        RadioButton selectedRadioButton = (RadioButton) sexRadioButtonToggleGroup.getSelectedToggle();
-        if (selectedRadioButton != null) {
-            return selectedRadioButton.getText();
-        } else { return ""; }
+    @Override
+    protected String writeDataToJson() throws IOException, ParseException {
+        BasicData1SceneJsonStorage sceneJsonStorage = new BasicData1SceneJsonStorage();
+        sceneJsonStorage.writePartialDataToSubJson(nameTextField.getId(), nameTextField.getText());
+        sceneJsonStorage.writePartialDataToSubJson(surnameTextField.getId(), surnameTextField.getText());
+        sceneJsonStorage.writePartialDataToSubJson(telephoneTextField.getId(), telephoneTextField.getText());
+        sceneJsonStorage.writePartialDataToSubJson(emailTextField.getId(), emailTextField.getText());
+        sceneJsonStorage.writePartialDataToSubJson("sexRadioButtonToggleGroup", getSexRadioButtonSelected());
+        return sceneJsonStorage.writeToJsonStorage();
     }
 
-    public void goBackToStart(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.START_TITLE.value, ScenePaths.START_SCENE.value);
+    public void goBackToStartScene(ActionEvent actionEvent) throws IOException {
+        loadScene(SceneTitles.START_SCENE_TITLE.value, ScenePaths.START_SCENE.value);
     }
 
-    public void goNextToBasicDataWindow2AndParse(ActionEvent actionEvent) throws IOException {
+    public void goNextToBasicData2SceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (this.validateAll()) {
-            loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
+            try {
+                writeDataToJson();
+            } catch (ParseException e) {
+                new StorageWriteErrorAlert();
+            }
+            loadScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
         } else {
             Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),
                     true, true, InputType.NAME));
@@ -98,7 +117,7 @@ public class BasicDataWindow1Controller extends ControllerTemplate {
                     false, true, InputType.TELEPHONE));
             Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
                     true, true, InputType.SEX));
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }

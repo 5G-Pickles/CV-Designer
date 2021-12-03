@@ -6,30 +6,33 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.json.simple.parser.ParseException;
+import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
 import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.InvalidInputAlert;
+import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class EducationHistoryController extends ControllerTemplate {
+public class EducationHistorySceneController extends SceneControllerTemplate {
     public Label schoolNameLabel;
     public Label countryLabel;
     public Label fieldOfStudyLabel;
     public Label degreeLabel;
+    public Label fromDateLabel;
+    public Label toDateLabel;
 
     public TextField schoolNameTextField;
     public TextField countryTextField;
     public TextField fieldOfStudyTextField;
+    public TextField degreeTextField;
+
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
-    public TextField degreeTextField;
-    public Label fromDateLabel;
-    public Label toDateLabel;
 
     public boolean validateSchoolName() {
         String text = schoolNameTextField.getText();
@@ -59,16 +62,6 @@ public class EducationHistoryController extends ControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
-    @Override
-    protected boolean validateAll() {
-        return (validateCountry() && validateDegree() && validateDatesPicked() &&
-                validateCountry() && validateSchoolName() && validateFieldOfStudy());
-    }
-
-    public void goBackToBasicDataWindow2(ActionEvent actionEvent) throws IOException {
-        loadScene(SceneTitles.BASIC_DATA_WINDOW_2_TITLE.value, ScenePaths.BASIC_DATA_WINDOW_2_SCENE.value);
-    }
-
     @FXML
     private boolean validateDatesPicked() {
         LocalDate fromDate = fromDatePicker.getValue();
@@ -79,9 +72,29 @@ public class EducationHistoryController extends ControllerTemplate {
         } else { return true; }
     }
 
-    public void goNextToEmploymentHistoryAndParse(ActionEvent actionEvent) throws IOException {
+    @Override
+    protected boolean validateAll() {
+        return (validateCountry() && validateDegree() && validateDatesPicked() &&
+                validateCountry() && validateSchoolName() && validateFieldOfStudy());
+    }
+
+    @Override
+    protected String writeDataToJson() throws IOException, ParseException {
+        return null;
+    }
+
+    public void goBackToBasicData2Scene(ActionEvent actionEvent) throws IOException {
+        loadScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
+    }
+
+    public void goNextToEmploymentHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (validateAll()) {
-            loadScene(SceneTitles.EMPLOYMENT_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
+            try {
+                writeDataToJson();
+            } catch (ParseException e) {
+                new StorageWriteErrorAlert();
+            }
+            loadScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
             Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
             Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
@@ -91,7 +104,7 @@ public class EducationHistoryController extends ControllerTemplate {
             Styling.showError(fromDateLabel, validateDatesPicked());
             Styling.showError(toDateLabel, validateDatesPicked());
 
-            new InvalidInputAlert(Alert.AlertType.ERROR).showAndWait();
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 }
