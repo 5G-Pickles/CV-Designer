@@ -104,6 +104,10 @@ public class BasicData1SceneController extends SceneControllerTemplate {
     public void goLoadDataBasicData1Scene(ActionEvent actionEvent) {
         try {
             this.loadData(actionEvent);
+            if (fromStorageData == null) {
+                new StorageNoDataInfoAlert();
+                return;
+            }
             nameTextField.setText((String) fromStorageData.get(nameTextField.getId()));
             surnameTextField.setText((String) fromStorageData.get(surnameTextField.getId()));
             telephoneTextField.setText((String) fromStorageData.get(telephoneTextField.getId()));
