@@ -8,4 +8,10 @@ public class InvalidInputErrorAlert extends Alert {
         this.setHeaderText("Input not valid");
         this.setContentText("Please make sure all fields are filled-in appropriately");
     }
+
+    public InvalidInputErrorAlert(String message) {
+        super(AlertType.ERROR);
+        this.setHeaderText("Input not valid");
+        this.setContentText(message);
+    }
 }
