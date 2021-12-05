@@ -107,11 +107,6 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <Label fx:id="typeLabel" prefHeight="27.0" prefWidth="256.0" text="Type:" textAlignment="JUSTIFY" textFill="#004aad">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
                   <RadioButton fx:id="specificKnowledgeRadioButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="224.0" text="Specific knowledge" textFill="#004aad" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />

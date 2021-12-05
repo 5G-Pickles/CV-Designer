@@ -21,7 +21,6 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
 
     public Label topicLabel;
     public Label descriptionLabel;
-    public Label typeLabel;
 
     public ToggleGroup hardSkillTypeRadioButtonToggleGroup;
     public RadioButton specificKnowledgeRadioButton;

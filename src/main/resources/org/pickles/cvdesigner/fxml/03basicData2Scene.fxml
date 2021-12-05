@@ -79,22 +79,22 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="cityLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="cityLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="270.0" text="City*:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roadLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="roadLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="425.0" text="Road*:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="buildingLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="buildingLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="296.0" text="Building/Apartment*:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="zipLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="zipLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="257.0" text="ZIP code*:" textFill="#004aad" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
