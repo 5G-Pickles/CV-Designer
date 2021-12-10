@@ -159,7 +159,6 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
         }
         ArrayList<String> listViewItems = new ArrayList<>();
         listViewData.keySet().forEach(key -> {
-            System.out.println(listViewData.get(key));
             listViewItemData = (JSONObject) listViewData.get(key);
             String label = "Company: " + listViewItemData.get(companyNameTextField.getId()) + "\n"
                     + "NIP: " + listViewItemData.get(nipTextField.getId()) + "\n"
