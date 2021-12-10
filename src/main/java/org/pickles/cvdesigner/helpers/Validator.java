@@ -32,9 +32,9 @@ public abstract class Validator {
                 case COUNTRY -> { return countriesList.isCountry(text); }
                 case CAPITALIZED -> { return Character.isUpperCase(text.charAt(0)); }
                 case NIP -> { return validateNIP(text); }
-                case SEX -> { return !text.isEmpty(); }
-                }
+                case SEX, FREE -> { return !text.isEmpty(); }
             }
+        }
         return true;
     }
 

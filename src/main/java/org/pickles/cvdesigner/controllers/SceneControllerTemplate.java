@@ -7,16 +7,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.Main;
 import org.pickles.cvdesigner.enums.SceneSizes;
-import org.pickles.cvdesigner.storage.JsonStorageTemplate;
 
 import java.io.IOException;
 
-import static org.pickles.cvdesigner.Main.fxmlLoader;
-import static org.pickles.cvdesigner.Main.scene;
-import static org.pickles.cvdesigner.Main.mainStage;
+import static org.pickles.cvdesigner.Main.*;
 
 public abstract class SceneControllerTemplate {
-    public static JSONObject fromStorageData;
+    protected static JSONObject fromStorageData;
 
     protected static void loadNextScene(String sceneTitle, String resourceName) throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource(resourceName));
@@ -29,6 +26,8 @@ public abstract class SceneControllerTemplate {
     }
 
     protected abstract void loadData(ActionEvent actionEvent) throws IOException, ParseException;
+
+    protected abstract void setDataFromListViewItemData();
 
     protected abstract boolean validateAll();
 

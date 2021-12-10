@@ -7,7 +7,8 @@ public enum InputType {
     COUNTRY("country"),
     CAPITALIZED("capitalized"),
     NIP("nip"),
-    SEX("sex");
+    SEX("sex"),
+    FREE("free");
 
     public final String value;
 
