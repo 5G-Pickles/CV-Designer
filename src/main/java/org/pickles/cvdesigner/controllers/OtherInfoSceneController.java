@@ -33,6 +33,11 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+
+    }
+
+    @Override
     protected boolean validateAll() {
         return validateOtherInfo();
     }

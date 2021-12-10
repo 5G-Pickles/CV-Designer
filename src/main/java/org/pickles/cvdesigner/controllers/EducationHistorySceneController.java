@@ -1,11 +1,14 @@
 package org.pickles.cvdesigner.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
@@ -20,6 +23,7 @@ import org.pickles.cvdesigner.storage.EducationHistorySceneJsonStorage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class EducationHistorySceneController extends SceneControllerTemplate {
     public Label schoolNameLabel;
@@ -37,7 +41,12 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
 
-    public ListView educationHistoryListView;
+    public ListView<String> educationHistoryListView;
+
+    protected JSONObject listViewData = new JSONObject();
+    protected JSONObject listViewItemData = new JSONObject();
+    protected Integer currentNextIndex = 0;
+    protected Integer selectedItemIndex = null;
 
     public boolean validateSchoolName() {
         String text = schoolNameTextField.getText();
@@ -73,7 +82,10 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
         LocalDate toDate = toDatePicker.getValue();
 
         if (fromDate != null && toDate!= null) {
-            return (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
+            boolean validity = (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
+            Styling.showError(fromDateLabel, validity);
+            Styling.showError(toDateLabel, validity);
+            return validity;
         } else { return true; }
     }
 
@@ -84,21 +96,26 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+        schoolNameTextField.setText((String) listViewItemData.get(schoolNameTextField.getId()));
+        countryTextField.setText((String) listViewItemData.get(countryTextField.getId()));
+        fieldOfStudyTextField.setText((String) listViewItemData.get(fieldOfStudyTextField.getId()));
+        degreeTextField.setText((String) listViewItemData.get(degreeTextField.getId()));
+
+        fromDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) listViewItemData.get(fromDatePicker.getId())));
+        toDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) listViewItemData.get(toDatePicker.getId())));
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (validateCountry() && validateDegree() && validateDatesPicked() &&
-                validateCountry() && validateSchoolName() && validateFieldOfStudy());
+        return (validateCountry() & validateDegree() & validateDatesPicked() &
+                validateCountry() & validateSchoolName() & validateFieldOfStudy());
     }
 
     @Override
     protected String writeDataToJson() throws IOException, ParseException {
         EducationHistorySceneJsonStorage jsonStorage = new EducationHistorySceneJsonStorage();
-        jsonStorage.writePartialDataToSubJson(schoolNameTextField.getId(), schoolNameTextField.getText());
-        jsonStorage.writePartialDataToSubJson(countryTextField.getId(), countryTextField.getText());
-        jsonStorage.writePartialDataToSubJson(fieldOfStudyTextField.getId(), fieldOfStudyTextField.getText());
-        jsonStorage.writePartialDataToSubJson(degreeTextField.getId(), degreeTextField.getText());
-
-        jsonStorage.writePartialDataToSubJson(fromDatePicker.getId(),LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
-        jsonStorage.writePartialDataToSubJson(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+        jsonStorage.writePartialDataToSubJson(educationHistoryListView.getId(), listViewData);
         return jsonStorage.writeToJsonStorage();
     }
 
@@ -115,14 +132,6 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
             }
             loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
         } else {
-            Styling.showError(schoolNameLabel, Validator.inputValid(schoolNameTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false, true, InputType.COUNTRY));
-            Styling.showError(fieldOfStudyLabel, Validator.inputValid(fieldOfStudyTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(degreeLabel, Validator.inputValid(degreeTextField.getText(), false, true, InputType.CAPITALIZED));
-
-            Styling.showError(fromDateLabel, validateDatesPicked());
-            Styling.showError(toDateLabel, validateDatesPicked());
-
             new InvalidInputErrorAlert().showAndWait();
         }
     }
@@ -134,20 +143,69 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
                 new StorageNoDataInfoAlert();
                 return;
             }
-
-            schoolNameTextField.setText((String) fromStorageData.get(schoolNameTextField.getId()));
-            countryTextField.setText((String) fromStorageData.get(countryTextField.getId()));
-            fieldOfStudyTextField.setText((String) fromStorageData.get(fieldOfStudyTextField.getId()));
-            degreeTextField.setText((String) fromStorageData.get(degreeTextField.getId()));
-
-            fromDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(fromDatePicker.getId())));
-            toDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(toDatePicker.getId())));
-        } catch(IOException | ParseException e) {
+            getListViewDataFromStorage();
+            if (listViewItemData != null) {
+                setDataFromListViewItemData();
+            }
+        } catch (IOException | ParseException e) {
             new StorageNoDataInfoAlert();
         }
     }
 
-    public void goAddToEducationHistoryListView(ActionEvent actionEvent) {
+    public void goAddToEducationHistoryListView(ActionEvent actionEvent) throws IOException, ParseException {
+        if (validateAll() && !schoolNameTextField.getText().isEmpty()) {
+            if (selectedItemIndex == null) {
+                selectedItemIndex = currentNextIndex;
+            }
+            if (listViewData == null) {
+                listViewData = new JSONObject();
+            }
+            listViewItemData = new JSONObject();
+            listViewItemData.put(schoolNameTextField.getId(), schoolNameTextField.getText());
+            listViewItemData.put(countryTextField.getId(), countryTextField.getText());
+            listViewItemData.put(fieldOfStudyTextField.getId(), fieldOfStudyTextField.getText());
+            listViewItemData.put(degreeTextField.getId(), degreeTextField.getText());
 
+            listViewItemData.put(fromDatePicker.getId(), LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
+            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+
+            listViewData.put(selectedItemIndex.toString(), listViewItemData);
+
+            selectedItemIndex = null;
+            saveAndLoadDataInProperOrder(actionEvent);
+        }
+    }
+
+    private void saveAndLoadDataInProperOrder(ActionEvent actionEvent) throws IOException, ParseException {
+        writeDataToJson();
+        this.loadData(actionEvent);
+        getListViewDataFromStorage();
+    }
+
+    public void getListViewDataFromStorage() {
+        listViewData = (JSONObject) fromStorageData.get(educationHistoryListView.getId());
+        if (listViewData == null) {
+            listViewData = new JSONObject();
+        }
+        ArrayList<String> listViewItems = new ArrayList<>();
+        listViewData.keySet().forEach(key -> {
+            listViewItemData = (JSONObject) listViewData.get(key);
+            String label = "School: " + listViewItemData.get(schoolNameTextField.getId()) + "\n"
+                    + "Field: " + listViewItemData.get(fieldOfStudyTextField.getId()) + "\n"
+                    + "Degree: " + listViewItemData.get(degreeTextField.getId());
+            listViewItems.add(Integer.parseInt((String) key), label);
+        });
+        currentNextIndex = listViewData.keySet().size();
+        educationHistoryListView.setItems(FXCollections.observableArrayList(listViewItems));
+        listViewItemData = (JSONObject) listViewData.get(String.valueOf(educationHistoryListView.getItems().size() - 1));
+    }
+
+
+    public void getClickedItem(MouseEvent mouseEvent) {
+        selectedItemIndex = educationHistoryListView.getSelectionModel().getSelectedIndex();
+        listViewItemData = (JSONObject) listViewData.get(selectedItemIndex.toString());
+        if (listViewItemData != null) {
+            setDataFromListViewItemData();
+        }
     }
 }

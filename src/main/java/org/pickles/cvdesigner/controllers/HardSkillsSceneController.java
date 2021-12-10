@@ -1,10 +1,8 @@
 package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
@@ -32,7 +30,7 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
     public RadioButton linksToPortfolioRadioButton;
     public RadioButton licencesRadioButton;
 
-    public ListView hardSkillsListView;
+    public ListView<String> hardSkillsListView;
 
     public String getHardSkillRadioButtonSelected() {
         RadioButton selectedRadioButton = (RadioButton) hardSkillTypeRadioButtonToggleGroup.getSelectedToggle();
@@ -43,13 +41,20 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
 
     public boolean validateTopic() {
         String text = topicTextField.getText();
-        Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
+            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        }
 
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateDescription() {
-        return !(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty());
+        String text = descriptionTextArea.getText();
+        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
+            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        }
+
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     @Override
@@ -59,8 +64,13 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (validateTopic() && validateDescription());
+        return (validateTopic() & validateDescription());
     }
 
     @Override
@@ -86,7 +96,7 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
             loadNextScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
         } else {
             Styling.showError(topicLabel, validateTopic());
-            Styling.showError(topicLabel, validateDescription());
+
 
             if (!validateDescription())
                 new InvalidInputErrorAlert("Topic cannot be empty").showAndWait();
@@ -134,6 +144,10 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goAddToHardSkillsListView(ActionEvent actionEvent) {
+
+    }
+
+    public void getClickedItem(MouseEvent mouseEvent) {
 
     }
 }

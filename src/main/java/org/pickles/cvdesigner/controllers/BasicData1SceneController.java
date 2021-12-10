@@ -76,6 +76,8 @@ public class BasicData1SceneController extends SceneControllerTemplate {
     }
 
     public boolean validateSexRadioButton() {
+        Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
+                true, true, InputType.SEX));
         return !this.getSexRadioButtonSelected().isEmpty();
     }
 
@@ -86,8 +88,13 @@ public class BasicData1SceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (this.validateName() && this.validateSurname() && this.validateEmail() && this.validateSexRadioButton());
+        return (this.validateName() & this.validateSurname() & this.validateEmail() & this.validateSexRadioButton());
     }
 
     @Override
@@ -142,16 +149,6 @@ public class BasicData1SceneController extends SceneControllerTemplate {
             }
             loadNextScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
         } else {
-            Styling.showError(nameLabel, Validator.inputValid(nameTextField.getText(),
-                    true, true, InputType.NAME));
-            Styling.showError(surnameLabel, Validator.inputValid(surnameTextField.getText(),
-                    true, true, InputType.NAME));
-            Styling.showError(emailLabel, Validator.inputValid(emailTextField.getText(),
-                    true, true, InputType.EMAIL));
-            Styling.showError(telephoneLabel, Validator.inputValid(telephoneTextField.getText(),
-                    false, true, InputType.TELEPHONE));
-            Styling.showError(sexLabel, Validator.inputValid(this.getSexRadioButtonSelected(),
-                    true, true, InputType.SEX));
             new InvalidInputErrorAlert().showAndWait();
         }
     }

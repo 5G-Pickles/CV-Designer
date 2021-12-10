@@ -2,6 +2,7 @@ package org.pickles.cvdesigner.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
@@ -20,19 +21,26 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
 
     public Label topicLabel;
 
-    public ListView softSkillsListView;
+    public ListView<String> softSkillsListView;
     public TextArea descriptionTextArea;
     public Button loadDataButton;
 
     public boolean validateTopic() {
         String text = topicTextField.getText();
-        Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
+            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        }
 
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     public boolean validateDescription() {
-        return !(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty());
+        String text = descriptionTextArea.getText();
+        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
+            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        }
+
+        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
     @Override
@@ -42,8 +50,13 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (validateTopic() && validateDescription());
+        return (validateTopic() & validateDescription());
     }
 
     @Override
@@ -92,6 +105,10 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goAddToSoftSkillsListView(ActionEvent actionEvent) {
+
+    }
+
+    public void getClickedItem(MouseEvent mouseEvent) {
 
     }
 }

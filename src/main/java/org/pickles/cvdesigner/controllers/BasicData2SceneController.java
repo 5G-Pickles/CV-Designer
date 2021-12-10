@@ -92,9 +92,14 @@ public class BasicData2SceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (this.validateCountry() && this.validateCity() && this.validateRoad() && this.validateBuilding()
-                && this.validateApartment() && this.validateZipCode());
+        return (this.validateCountry() & this.validateCity() & this.validateRoad() &
+                this.validateBuilding() & this.validateApartment() & this.validateZipCode());
     }
 
     @Override
@@ -171,19 +176,6 @@ public class BasicData2SceneController extends SceneControllerTemplate {
             }
             loadNextScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
-            Styling.showError(countryLabel, Validator.inputValid(countryTextField.getText(), false,
-                    true, InputType.COUNTRY));
-            Styling.showError(cityLabel, Validator.inputValid(cityTextField.getText(), true,
-                    false, null));
-            Styling.showError(roadLabel, Validator.inputValid(roadTextField.getText(), true,
-                    false, null));
-            Styling.showError(zipLabel, Validator.inputValid(zipCodeTextField.getText(), true,
-                    false, null));
-            Styling.showError(buildingLabel, Validator.inputValid(apartmentTextField.getText(), true,
-                    false, null));
-            Styling.showError(buildingLabel, Validator.inputValid(buildingTextField.getText(), true,
-                    false, null));
-
             new InvalidInputErrorAlert().showAndWait();
         }
     }

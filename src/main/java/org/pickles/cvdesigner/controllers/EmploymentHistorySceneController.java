@@ -1,11 +1,14 @@
 package org.pickles.cvdesigner.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageNoDataInfoAlert;
@@ -20,6 +23,7 @@ import org.pickles.cvdesigner.storage.EmploymentHistorySceneJsonStorage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class EmploymentHistorySceneController extends SceneControllerTemplate {
     public Label companyNameLabel;
@@ -37,14 +41,18 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
 
-    public ListView employmentHistoryListView;
+    public ListView<String> employmentHistoryListView;
 
+    protected JSONObject listViewData = new JSONObject();
+    protected JSONObject listViewItemData = new JSONObject();
+    protected Integer currentNextIndex = 0;
+    protected Integer selectedItemIndex = null;
 
     public boolean validateCompanyName() {
         String text = companyNameTextField.getText();
-        Styling.showError(companyNameLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(companyNameLabel, Validator.inputValid(text, false, true, InputType.FREE));
 
-        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, false, true, InputType.FREE);
     }
 
     public boolean validateAddress() {
@@ -68,6 +76,19 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
 
+    @FXML
+    private boolean validateDatesPicked() {
+        LocalDate fromDate = fromDatePicker.getValue();
+        LocalDate toDate = toDatePicker.getValue();
+
+        if (fromDate != null && toDate!= null) {
+            boolean validity = (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
+            Styling.showError(fromDateLabel, validity);
+            Styling.showError(toDateLabel, validity);
+            return validity;
+        } else { return true; }
+    }
+
     @Override
     protected void loadData(ActionEvent actionEvent) throws IOException, ParseException {
         EmploymentHistorySceneJsonStorage sceneJsonStorage = new EmploymentHistorySceneJsonStorage();
@@ -75,32 +96,27 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
     }
 
     @Override
+    protected void setDataFromListViewItemData() {
+        companyNameTextField.setText((String) listViewItemData.get(companyNameTextField.getId()));
+        addressTextField.setText((String) listViewItemData.get(addressTextField.getId()));
+        nipTextField.setText((String) listViewItemData.get(nipTextField.getId()));
+        positionTextField.setText((String) listViewItemData.get(positionTextField.getId()));
+
+        fromDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) listViewItemData.get(fromDatePicker.getId())));
+        toDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) listViewItemData.get(toDatePicker.getId())));
+    }
+
+    @Override
     protected boolean validateAll() {
-        return (validateAddress() && validateNip() && validatePosition()
-                && validateDatesPicked() && validateCompanyName());
+        return (validateAddress() & validateNip() & validatePosition()
+                & validateDatesPicked() & validateCompanyName());
     }
 
     @Override
     protected String writeDataToJson() throws IOException, ParseException {
         EmploymentHistorySceneJsonStorage jsonStorage = new EmploymentHistorySceneJsonStorage();
-        jsonStorage.writePartialDataToSubJson(companyNameTextField.getId(), companyNameTextField.getText());
-        jsonStorage.writePartialDataToSubJson(addressTextField.getId(), addressTextField.getText());
-        jsonStorage.writePartialDataToSubJson(nipTextField.getId(), nipTextField.getText());
-        jsonStorage.writePartialDataToSubJson(positionTextField.getId(), positionTextField.getText());
-
-        jsonStorage.writePartialDataToSubJson(fromDatePicker.getId(), LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
-        jsonStorage.writePartialDataToSubJson(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+        jsonStorage.writePartialDataToSubJson(employmentHistoryListView.getId(), listViewData);
         return jsonStorage.writeToJsonStorage();
-    }
-
-    @FXML
-    private boolean validateDatesPicked() {
-        LocalDate fromDate = fromDatePicker.getValue();
-        LocalDate toDate = toDatePicker.getValue();
-
-        if (fromDate != null && toDate!= null) {
-            return (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
-        } else { return true; }
     }
 
     public void goBackToEducationHistoryScene(ActionEvent actionEvent) throws IOException {
@@ -116,14 +132,6 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
             }
             loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
         } else {
-            Styling.showError(companyNameLabel, Validator.inputValid(companyNameTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(addressLabel, Validator.inputValid(addressTextField.getText(), false, true, InputType.CAPITALIZED));
-            Styling.showError(nipLabel, Validator.inputValid(nipTextField.getText(), false, true, InputType.NIP));
-            Styling.showError(positionLabel, Validator.inputValid(positionTextField.getText(), false, true, InputType.CAPITALIZED));
-
-            Styling.showError(fromDateLabel, validateDatesPicked());
-            Styling.showError(toDateLabel, validateDatesPicked());
-
             new InvalidInputErrorAlert().showAndWait();
         }
     }
@@ -135,20 +143,69 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
                 new StorageNoDataInfoAlert();
                 return;
             }
-
-            companyNameTextField.setText((String) fromStorageData.get(companyNameTextField.getId()));
-            addressTextField.setText((String) fromStorageData.get(addressTextField.getId()));
-            nipTextField.setText((String) fromStorageData.get(nipTextField.getId()));
-            positionTextField.setText((String) fromStorageData.get(positionTextField.getId()));
-
-            fromDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(fromDatePicker.getId())));
-            toDatePicker.setValue(LocalDateFormatter.stringToLocalDate((String) fromStorageData.get(toDatePicker.getId())));
+            getListViewDataFromStorage();
+            if (listViewItemData != null) {
+                setDataFromListViewItemData();
+            }
         } catch(IOException | ParseException e) {
             new StorageNoDataInfoAlert();
         }
     }
 
-    public void goAddToEmploymentHistoryListView(ActionEvent actionEvent) {
+    private void getListViewDataFromStorage() {
+        listViewData = (JSONObject) fromStorageData.get(employmentHistoryListView.getId());
+        if (listViewData == null) {
+            listViewData = new JSONObject();
+        }
+        ArrayList<String> listViewItems = new ArrayList<>();
+        listViewData.keySet().forEach(key -> {
+            System.out.println(listViewData.get(key));
+            listViewItemData = (JSONObject) listViewData.get(key);
+            String label = "Company: " + listViewItemData.get(companyNameTextField.getId()) + "\n"
+                    + "NIP: " + listViewItemData.get(nipTextField.getId()) + "\n"
+                    + "Position: " + listViewItemData.get(positionTextField.getId());
+            listViewItems.add(Integer.parseInt((String) key), label);
+        });
+        currentNextIndex = listViewData.keySet().size();
+        employmentHistoryListView.setItems(FXCollections.observableArrayList(listViewItems));
+        listViewItemData = (JSONObject) listViewData.get(String.valueOf(employmentHistoryListView.getItems().size() - 1));
+    }
 
+    public void goAddToEmploymentHistoryListView(ActionEvent actionEvent) throws IOException, ParseException {
+        if (validateAll() && !companyNameTextField.getText().isEmpty()) {
+            if (selectedItemIndex == null) {
+                selectedItemIndex = currentNextIndex;
+            }
+            if (listViewData == null) {
+                listViewData = new JSONObject();
+            }
+            listViewItemData = new JSONObject();
+            listViewItemData.put(companyNameTextField.getId(), companyNameTextField.getText());
+            listViewItemData.put(addressTextField.getId(), addressTextField.getText());
+            listViewItemData.put(nipTextField.getId(), nipTextField.getText());
+            listViewItemData.put(positionTextField.getId(), positionTextField.getText());
+
+            listViewItemData.put(fromDatePicker.getId(), LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
+            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+
+            listViewData.put(selectedItemIndex.toString(), listViewItemData);
+
+            selectedItemIndex = null;
+            saveAndLoadDataInProperOrder(actionEvent);
+        }
+    }
+
+    private void saveAndLoadDataInProperOrder(ActionEvent actionEvent) throws IOException, ParseException {
+        writeDataToJson();
+        this.loadData(actionEvent);
+        getListViewDataFromStorage();
+    }
+
+    public void getClickedItem(MouseEvent mouseEvent) {
+        selectedItemIndex = employmentHistoryListView.getSelectionModel().getSelectedIndex();
+        listViewItemData = (JSONObject) listViewData.get(selectedItemIndex.toString());
+        if (listViewItemData != null) {
+            setDataFromListViewItemData();
+        }
     }
 }
