@@ -39,7 +39,7 @@ public abstract class JsonStorageTemplate {
     }
 
     @SuppressWarnings("unchecked")
-    public void writePartialDataToSubJson(String key, String value) {
+    public void writePartialDataToSubJson(String key, Object value) {
         jsonObjectSubData.put(key, value);
     }
 
