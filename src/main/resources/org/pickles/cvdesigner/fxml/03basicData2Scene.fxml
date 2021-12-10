@@ -74,7 +74,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label fx:id="countryLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.columnIndex="1">
+                  <Label fx:id="countryLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Country*:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
