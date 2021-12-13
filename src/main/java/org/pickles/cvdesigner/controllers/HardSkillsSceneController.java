@@ -49,18 +49,14 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
 
     public boolean validateTopic() {
         String text = topicTextField.getText();
-        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
-            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
-        }
+        Styling.showError(topicLabel, Validator.inputValid(text, true, true, InputType.CAPITALIZED));
 
-        return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
+        return Validator.inputValid(text, true, true, InputType.CAPITALIZED);
     }
 
     public boolean validateDescription() {
         String text = descriptionTextArea.getText();
-        if (!(topicTextField.getText().isEmpty() ^ descriptionTextArea.getText().isEmpty())) {
-            Styling.showError(topicLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
-        }
+        Styling.showError(descriptionLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
 
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
@@ -103,7 +99,7 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
 
     @Override
     protected boolean validateAll() {
-        return (validateTopic() & validateDescription());
+        return (validateTopic() && validateDescription());
     }
 
     @Override
@@ -118,22 +114,12 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goNextToSoftSkillsSceneAndStoreData(ActionEvent actionEvent) throws IOException {
-        if (validateAll()) {
             try {
                 writeDataToJson();
             } catch (ParseException e) {
                 new StorageWriteErrorAlert();
             }
             loadNextScene(SceneTitles.SOFT_SKILLS_SCENE_TITLE.value, ScenePaths.SOFT_SKILLS_SCENE.value);
-        } else {
-            Styling.showError(topicLabel, validateTopic());
-
-
-            if (!validateDescription())
-                new InvalidInputErrorAlert("Topic cannot be empty").showAndWait();
-            else
-                new InvalidInputErrorAlert().showAndWait();
-        }
     }
 
     public void goLoadDataHardSkillsScene(ActionEvent actionEvent) {
@@ -147,7 +133,6 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
             if (listViewItemData != null) {
                 setDataFromListViewItemData();
             }
-
         } catch (IOException | ParseException e) {
             new StorageNoDataInfoAlert();
         }
@@ -165,11 +150,12 @@ public class HardSkillsSceneController extends SceneControllerTemplate {
             listViewItemData.put(topicTextField.getId(), topicTextField.getText());
             listViewItemData.put(descriptionTextArea.getId(), descriptionTextArea.getText());
             listViewItemData.put("hardSkillTypeRadioButtonToggleGroup", getHardSkillRadioButtonSelected());
-
             listViewData.put(selectedItemIndex.toString(), listViewItemData);
 
             selectedItemIndex = null;
             saveAndLoadDataInProperOrder(actionEvent);
+        } else if (topicTextField.getText().isEmpty()) {
+            new InvalidInputErrorAlert("Topic cannot be empty").showAndWait();
         }
     }
 
