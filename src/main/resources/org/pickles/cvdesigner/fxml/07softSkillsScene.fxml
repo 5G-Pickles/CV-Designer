@@ -80,7 +80,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Description:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Label fx:id="descriptionLabel" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="256.0" text="Description:" textAlignment="JUSTIFY" textFill="#004aad" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
