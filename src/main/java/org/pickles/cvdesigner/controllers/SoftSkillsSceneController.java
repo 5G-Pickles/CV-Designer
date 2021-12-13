@@ -78,12 +78,12 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goNextToOtherInfoSceneAndStoreData(ActionEvent actionEvent) throws IOException {
-            try {
-                writeDataToJson();
-            } catch (ParseException e) {
-                new StorageWriteErrorAlert();
-            }
-            loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
+        try {
+            writeDataToJson();
+        } catch (ParseException e) {
+            new StorageWriteErrorAlert();
+        }
+        loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
     }
 
     public void goLoadDataSoftSkillsScene(ActionEvent actionEvent) {

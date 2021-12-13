@@ -81,12 +81,14 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
         LocalDate fromDate = fromDatePicker.getValue();
         LocalDate toDate = toDatePicker.getValue();
 
-        if (fromDate != null && toDate!= null) {
+        if (fromDate != null && toDate != null) {
             boolean validity = (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
             Styling.showError(fromDateLabel, validity);
             Styling.showError(toDateLabel, validity);
             return validity;
-        } else { return true; }
+        } else {
+            return true;
+        }
     }
 
     @Override
@@ -124,16 +126,12 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goNextToHardSkillsSceneAndStoreData(ActionEvent actionEvent) throws IOException {
-        if (validateAll()) {
-            try {
-                writeDataToJson();
-            } catch (ParseException e) {
-                new StorageWriteErrorAlert();
-            }
-            loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
-        } else {
-            new InvalidInputErrorAlert().showAndWait();
+        try {
+            writeDataToJson();
+        } catch (ParseException e) {
+            new StorageWriteErrorAlert();
         }
+        loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
     }
 
     public void goLoadDataEmploymentHistoryScene(ActionEvent actionEvent) {
@@ -147,7 +145,7 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
             if (listViewItemData != null) {
                 setDataFromListViewItemData();
             }
-        } catch(IOException | ParseException e) {
+        } catch (IOException | ParseException e) {
             new StorageNoDataInfoAlert();
         }
     }
@@ -191,6 +189,8 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
 
             selectedItemIndex = null;
             saveAndLoadDataInProperOrder(actionEvent);
+        } else {
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 
