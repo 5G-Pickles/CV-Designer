@@ -24,6 +24,7 @@ public class Main extends Application {
                 SceneSizes.MAIN_HEIGHT.value);
         stage.setTitle("CV-Designer");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

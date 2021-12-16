@@ -92,7 +92,7 @@
                </children>
             </GridPane>
             <Button fx:id="addToHardSkillsListViewButton" layoutX="14.0" layoutY="526.0" mnemonicParsing="false" onAction="#goAddToHardSkillsListView" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Add" />
-            <GridPane fx:id="hardSkillTypeGridPane" layoutX="357.0" layoutY="179.0" prefHeight="300.0" prefWidth="186.0" style="-fx-vgap: 50; -fx-hgap: 20;">
+            <GridPane fx:id="hardSkillTypeGridPane" layoutX="357.0" layoutY="179.0" prefHeight="300.0" prefWidth="225.0" style="-fx-vgap: 50; -fx-hgap: 20;">
                <columnConstraints>
                   <ColumnConstraints />
                </columnConstraints>

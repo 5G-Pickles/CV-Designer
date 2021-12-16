@@ -44,7 +44,7 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
 
     public boolean validateDescription() {
         String text = descriptionTextArea.getText();
-        Styling.showError(descriptionLabel, Validator.inputValid(text, false, true, InputType.CAPITALIZED));
+        Styling.showError(descriptionLabel, Validator.inputValid(text, false, true, InputType.FREE));
 
         return Validator.inputValid(text, false, true, InputType.CAPITALIZED);
     }
