@@ -1,5 +1,7 @@
 package org.pickles.cvdesigner.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,6 +24,7 @@ public abstract class SceneControllerTemplate {
                 SceneSizes.MAIN_HEIGHT.value);
         mainStage.setTitle(sceneTitle);
         mainStage.setScene(scene);
+        mainStage.setResizable(false);
         mainStage.show();
     }
 

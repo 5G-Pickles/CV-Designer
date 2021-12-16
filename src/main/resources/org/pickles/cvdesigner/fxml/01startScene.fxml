@@ -41,11 +41,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-      prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.StartSceneController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.StartSceneController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -88,13 +85,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="369.0" layoutY="370.0" mnemonicParsing="false" onAction="#goStart"
-                    style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;
-                    -fx-padding: 18 60;" text="Start">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <Button layoutX="369.0" layoutY="370.0" mnemonicParsing="false" onAction="#goStart" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 18 60;" text="Start" />
             <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="350.0" layoutY="142.0">
                <image>
                   <Image url="@../logo/logo.gif" />

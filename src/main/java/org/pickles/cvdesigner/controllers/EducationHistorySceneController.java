@@ -3,10 +3,7 @@ package org.pickles.cvdesigner.controllers;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -24,6 +21,7 @@ import org.pickles.cvdesigner.storage.EducationHistorySceneJsonStorage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EducationHistorySceneController extends SceneControllerTemplate {
     public Label schoolNameLabel;
@@ -40,6 +38,9 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
 
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
+
+    public Label nowDateLabel;
+    public CheckBox nowDateCheckBox;
 
     public ListView<String> educationHistoryListView;
 
@@ -81,12 +82,16 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
         LocalDate fromDate = fromDatePicker.getValue();
         LocalDate toDate = toDatePicker.getValue();
 
-        if (fromDate != null && toDate!= null) {
+        if (fromDate != null && toDate != null && !nowDateCheckBox.isSelected()) {
             boolean validity = (fromDate.isBefore(toDate) || fromDate.isEqual(toDate));
             Styling.showError(fromDateLabel, validity);
             Styling.showError(toDateLabel, validity);
             return validity;
-        } else { return true; }
+        } else if (fromDate != null && nowDateCheckBox.isSelected()) {
+            return true;
+        } else {
+            return true;
+        }
     }
 
     @Override
@@ -124,16 +129,12 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goNextToEmploymentHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
-        if (validateAll()) {
-            try {
-                writeDataToJson();
-            } catch (ParseException e) {
-                new StorageWriteErrorAlert();
-            }
-            loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
-        } else {
-            new InvalidInputErrorAlert().showAndWait();
+        try {
+            writeDataToJson();
+        } catch (ParseException e) {
+            new StorageWriteErrorAlert();
         }
+        loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
     }
 
     public void goLoadDataEducationHistoryScene(ActionEvent actionEvent) {
@@ -167,12 +168,15 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
             listViewItemData.put(degreeTextField.getId(), degreeTextField.getText());
 
             listViewItemData.put(fromDatePicker.getId(), LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
-            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+            LocalDate date = nowDateCheckBox.isSelected() ? LocalDate.now() : toDatePicker.getValue();
+            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(date));
 
             listViewData.put(selectedItemIndex.toString(), listViewItemData);
 
             selectedItemIndex = null;
             saveAndLoadDataInProperOrder(actionEvent);
+        } else {
+            new InvalidInputErrorAlert().showAndWait();
         }
     }
 
