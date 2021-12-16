@@ -3,10 +3,7 @@ package org.pickles.cvdesigner.controllers;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -40,6 +37,9 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
 
     public DatePicker fromDatePicker;
     public DatePicker toDatePicker;
+
+    public Label nowDateLabel;
+    public CheckBox nowDateCheckBox;
 
     public ListView<String> employmentHistoryListView;
 
@@ -183,7 +183,8 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
             listViewItemData.put(positionTextField.getId(), positionTextField.getText());
 
             listViewItemData.put(fromDatePicker.getId(), LocalDateFormatter.localDateToString(fromDatePicker.getValue()));
-            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(toDatePicker.getValue()));
+            LocalDate date = nowDateCheckBox.isSelected() ? LocalDate.now() : toDatePicker.getValue();
+            listViewItemData.put(toDatePicker.getId(), LocalDateFormatter.localDateToString(date));
 
             listViewData.put(selectedItemIndex.toString(), listViewItemData);
 
