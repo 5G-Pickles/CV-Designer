@@ -55,7 +55,7 @@
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
          <children>
             <TextArea fx:id="otherInfoTextArea" layoutX="12.0" layoutY="60.0" onKeyReleased="#validateOtherInfo" prefHeight="454.0" prefWidth="876.0" style="-fx-background-color: #B2C8E6; -fx-border-color: #5989CA; -fx-background-radius: 10; -fx-border-radius: 10;" />
-            <Button fx:id="nextToTemplates" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToTemplatesSceneAndStoreData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 9 24;" text="Next" />
+            <Button fx:id="nextToDesigner" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNextToDesignerSceneAndStoreData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 9 24;" text="Next" />
             <Button fx:id="backToSoftSkills" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToSoftSkillsScene" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px;                     -fx-padding: 9 24;" text="Back" />
             <Label fx:id="sceneInfoLabel" alignment="CENTER_RIGHT" layoutX="404.0" layoutY="18.0" prefHeight="27.0" prefWidth="93.0" text="Other info:" textAlignment="JUSTIFY" textFill="#004aad">
                <font>
