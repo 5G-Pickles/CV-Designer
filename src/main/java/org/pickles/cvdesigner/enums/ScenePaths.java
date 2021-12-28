@@ -8,7 +8,8 @@ public enum ScenePaths {
     EMPLOYMENT_SCENE("fxml/05employmentHistoryScene.fxml"),
     HARD_SKILLS_SCENE("fxml/06hardSkillsScene.fxml"),
     SOFT_SKILLS_SCENE("fxml/07softSkillsScene.fxml"),
-    OTHER_INFO_SCENE("fxml/08otherInfoScene.fxml");
+    OTHER_INFO_SCENE("fxml/08otherInfoScene.fxml"),
+    DESIGNER_SCENE("fxml/09designerScene.fxml");
 
     public final String value;
 
