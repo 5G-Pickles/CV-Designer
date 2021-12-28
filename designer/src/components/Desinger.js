@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
-import { useDrag } from "react-use-gesture";
+
+import Card from "./Card";
+import Paper from "./Paper";
+import RndCard from "./RndCard";
 
 const Content = styled.div`
   background-color: #004aad;
@@ -19,53 +21,26 @@ const Cards = styled.div`
   border-radius: 16px;
 `;
 
-const Card = styled.div`
-  position: relative;
-  margin: 1rem;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  border: white 2px solid;
-  border-radius: 16px;
-`;
+const Desinger = (props) => {
 
-const Paper = styled.div`
-  margin: 0 1rem 0 1rem;
-  background-color: white;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-columns: 50%;
-  grid-auto-flow: column;
-  height: 106rem;
-  width: 75rem;
-  border-radius: 16px;
-`;
 
-const Desinger = () => {
-  const [cardPos, setCardPos] = useState({ x: 0, y: 0 });
-  const bindCardPos = useDrag((params) => {
-    setCardPos({
-      x: params.offset[0],
-      y: params.offset[1],
-    });
-  });
-
+  
   return (
     <Content>
       <Cards>
-        <div
-          {...bindCardPos()}
-          style={{ position: "relative", top: cardPos.y, left: cardPos.x }}
-        >
-          <Card>Text</Card>
+        <Card text="text" />
+        <Card text="text" />
+        <Card text="text" />
+        <Card text="text" />
+        <Card text="text" />
+        <Card text="text" />
+        <div id="dupa">
+          <RndCard id="dupa" text="text" />
         </div>
-        <Card>Text</Card>
-        <Card>Text</Card>
-        <Card>Text</Card>
-        <Card>Text</Card>
       </Cards>
-      <Paper>pepe</Paper>
+      <Paper text="pepe" />
     </Content>
+    // <RndCard text="text" />
   );
 };
 
