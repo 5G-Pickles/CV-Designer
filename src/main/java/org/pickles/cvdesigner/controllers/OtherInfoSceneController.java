@@ -76,7 +76,16 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
         }
     }
 
-    public void goNextToTemplatesSceneAndStoreData(ActionEvent actionEvent) throws IOException {
-
+    public void goNextToDesignerSceneAndStoreData(ActionEvent actionEvent) throws IOException {
+        if (this.validateAll()) {
+            try {
+                writeDataToJson();
+            } catch (ParseException e) {
+                new StorageWriteErrorAlert();
+            }
+            loadNextScene(SceneTitles.DESIGNER_SCENE_TITLE.value, ScenePaths.DESIGNER_SCENE.value);
+        } else {
+            new InvalidInputErrorAlert().showAndWait();
+        }
     }
 }

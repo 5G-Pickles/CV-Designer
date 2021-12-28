@@ -8,7 +8,8 @@ public enum SceneTitles {
     EMPLOYMENT_HISTORY_SCENE_TITLE("Employment History"),
     HARD_SKILLS_SCENE_TITLE("Hard Skills"),
     SOFT_SKILLS_SCENE_TITLE("Soft Skills"),
-    OTHER_INFO_SCENE_TITLE("Other Info");
+    OTHER_INFO_SCENE_TITLE("Other Info"),
+    DESIGNER_SCENE_TITLE("Designer");
 
     public final String value;
 
