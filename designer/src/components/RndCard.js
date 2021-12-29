@@ -5,7 +5,6 @@ import { Rnd } from "react-rnd";
 const style = {
   background: "#004aad",
   position: "relative",
-  margin: "1rem",
   color: "white",
   text: "center",
   padding: "1rem",
@@ -15,6 +14,10 @@ const style = {
   alignItems: "center",
   justifyContent: "center",
 };
+
+const RndDiv = styled.div`
+  margin: 1rem;
+`;
 
 class RndCard extends React.Component {
   constructor() {
@@ -26,14 +29,8 @@ class RndCard extends React.Component {
   }
 
   render() {
-    const text = this.props.text;
-
-    // const thisEl = document.getElementById("dupa");
-    // console.log(thisEl);
-    // const boundries = thisEl.getBoundingClientRect();
-    // this.state.x = boundries.offsetLeft;
-    // this.state.y = boundries.offsetTop;
     return (
+      <RndDiv>
         <Rnd
           style={style}
           position={{ x: this.state.x, y: this.state.y }}
@@ -48,8 +45,9 @@ class RndCard extends React.Component {
             });
           }}
         >
-          {text}
+          {this.props.children}
         </Rnd>
+      </RndDiv>
     );
   }
 }
