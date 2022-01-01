@@ -15,13 +15,14 @@ class Paper extends React.PureComponent {
         preventCollision: false,
         cols: 24,
         compactType: null,
-        // resizeHandles: ['s', 'w', 'e', 'n', 'sw', 'nw', 'se', 'ne'],
     };
+
+    height = 2;
 
     state = {
         layout: [
             { x: 0, y: 0, w: 1, h: 1, i: "test1" },
-            { x: 0, y: 1, w: 1, h: 1, i: "test2" }
+            { x: 0, y: 0, w: 1, h: 1, i: "test2" }
         ]
     };
 
@@ -30,7 +31,15 @@ class Paper extends React.PureComponent {
             <React.Fragment>
                 <ReactGridLayout
                     {...this.props}
-                    onLayoutChange={(layout) => this.setState({ layout })}
+                    onLayoutChange={(layout) => {
+                        layout.forEach((item) => {
+                            if (item.y > this.height) {
+                                item.y = this.height;
+                            }
+                            console.log(layout)
+                        })
+                        this.setState({layout})
+                    }}
                 >
                     {this.state.layout.map((item) => (
                         <div key={item.i} data-grid={item}>
