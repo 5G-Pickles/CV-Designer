@@ -27,6 +27,9 @@ const Spacer = styled.div`
 `;
 
 const Desinger = (props) => {
+    const data = require("../storage.json");
+    console.log(data);
+
     const texts = {
         "footer": "footer",
         "header": "header",
