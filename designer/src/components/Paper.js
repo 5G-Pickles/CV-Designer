@@ -42,15 +42,13 @@ class Paper extends React.PureComponent {
                             if (item.h + item.y > this.height && item.i !== "footer") {
                                 item.h = this.height - item.y + 1
                             }
-
-                            console.log(layout)
                         })
                         this.setState({layout})
                     }}
                 >
                     {this.state.layout.map((item) => (
                         <div key={item.i} data-grid={item}>
-                            <span>{this.props.texts[item.i]}</span>
+                            <span>{this.props.texts[item.i].title}</span>
                         </div>
                     ))}
                 </ReactGridLayout>
