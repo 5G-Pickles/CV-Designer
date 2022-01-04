@@ -1,7 +1,8 @@
 import React from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
 
-import "./styles.css";
+import "./Paper.css";
+import GridElement from "./GridElement";
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -9,20 +10,23 @@ class Paper extends React.PureComponent {
     static defaultProps = {
         isDraggable: true,
         isResizable: true,
-        items: 5,
-        width: 800,
         rowHeight: 50,
         preventCollision: false,
-        cols: 24,
+        cols: 13,
         compactType: null,
     };
 
-    height = 2;
+    height = 18;
 
     state = {
         layout: [
-            { x: 0, y: 0, w: 1, h: 1, i: "test1" },
-            { x: 0, y: 0, w: 1, h: 1, i: "test2" }
+            { x: 0, y: 0, w: 13, h: 3, i: "header" },
+            { x: 0, y: 2, w: 3, h: 16, i: "info" },
+            { x: 3, y: 3, w: 10, h: 4, i: "education" },
+            { x: 3, y: 7, w: 10, h: 4, i: "job" },
+            { x: 3, y: 11, w: 5, h: 8, i: "hard" },
+            { x: 8, y: 11, w: 5, h: 8, i: "soft" },
+            { x: 0, y: 19, w: 13, h: 1, i: "footer", static: true }
         ]
     };
 
@@ -33,17 +37,20 @@ class Paper extends React.PureComponent {
                     {...this.props}
                     onLayoutChange={(layout) => {
                         layout.forEach((item) => {
-                            if (item.y > this.height) {
+                            if (item.y > this.height && item.i !== "footer") {
                                 item.y = this.height;
                             }
-                            console.log(layout)
+                            if (item.h + item.y > this.height && item.i !== "footer") {
+                                item.h = this.height - item.y + 1
+                            }
                         })
                         this.setState({layout})
                     }}
                 >
+                    {console.log(this.props.texts)}
                     {this.state.layout.map((item) => (
                         <div key={item.i} data-grid={item}>
-                            <span>{item.i}</span>
+                            <GridElement data={this.props.texts[item.i]} type={item.i} />
                         </div>
                     ))}
                 </ReactGridLayout>
