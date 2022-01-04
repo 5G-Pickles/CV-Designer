@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;
+import java.nio.file.Paths;
 
 public abstract class JsonStorageTemplate {
     private static String sceneName;
@@ -30,10 +31,7 @@ public abstract class JsonStorageTemplate {
     }
 
     public static String getPathToStorage() {
-        JFileChooser fr = new javax.swing.JFileChooser();
-        FileSystemView fw = fr.getFileSystemView();
-        File userDirectory = fw.getDefaultDirectory();
-        String storageDirPath = userDirectory.getPath();
+        String storageDirPath = Paths.get(System.getProperty("user.dir"), "designer", "src").toString();
         File storageFile = new File(storageDirPath, "storage.json");
         return storageFile.getAbsolutePath();
     }

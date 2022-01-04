@@ -2,20 +2,23 @@
   position: relative;
   transition: height 200ms ease;
 }
+
 .react-grid-item {
   transition: all 200ms ease;
   transition-property: left, top;
   background: rgba(0, 132, 255, 0.473);
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
+  font-size: small;
 }
+
 .react-grid-item span {
   display: inline-block;
-  padding: 20px 10px;
 }
+
 .react-grid-item.cssTransforms {
   transition-property: transform;
 }
+
 .react-grid-item.resizing {
   z-index: 1;
   will-change: width, height;
@@ -41,8 +44,8 @@
 
 .react-grid-item > .react-resizable-handle {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   bottom: 0;
   right: 0;
   cursor: se-resize;
@@ -57,4 +60,9 @@
   height: 5px;
   border-right: 2px solid rgba(0, 0, 0, 0.4);
   border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.footer {
+  padding: 10px;
+  font-size: x-small;
 }
