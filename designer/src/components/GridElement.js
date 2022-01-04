@@ -10,7 +10,7 @@ const TitledUnorderedList = (props) => {
             <ul>
                 {props.content[props.name].map((item) => (
                     <li key={sha256(item.title + item.content)}>
-                        <b>{item.title}</b> {item.content.length !== 0 && ("- " + item.content)}
+                        <b>{item.title}</b> {item.content.length !== 0 && (" - " + item.content)}
                     </li>
                 ))}
             </ul>

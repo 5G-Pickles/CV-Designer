@@ -1,9 +1,11 @@
 .footer__title {
     text-align: center;
+    word-wrap: break-word;
 }
 
 .footer__content {
     text-align: center;
+    word-wrap: break-word;
 }
 /*footer - end*/
 /*header - start*/
@@ -13,6 +15,7 @@
 
 .header__content {
     text-align: center;
+    word-wrap: break-word;
 }
 /*header - end*/
 /*soft - start*/
@@ -21,7 +24,7 @@
 }
 
 .soft__content {
-
+    word-wrap: break-word;
 }
 /*soft - end*/
 /*hard - start*/
@@ -30,7 +33,7 @@
 }
 
 .hard__content {
-
+    word-wrap: break-word;
 }
 
 .hard__content h4 {
@@ -43,8 +46,9 @@
     text-align: center;
 }
 
-.info__content {
-
+.info__content ul {
+    padding: 0 20px 0 20px;
+    word-wrap: break-word;
 }
 
 .info__content h4, span {
@@ -58,7 +62,7 @@
 }
 
 .job__content {
-
+    word-wrap: break-word;
 }
 /*job - end*/
 /*education - start*/
@@ -67,6 +71,6 @@
 }
 
 .education__content {
-
+    word-wrap: break-word;
 }
 /*education - end*/
