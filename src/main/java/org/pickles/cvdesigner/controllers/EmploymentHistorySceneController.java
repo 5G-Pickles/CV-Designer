@@ -122,7 +122,7 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goBackToEducationHistoryScene(ActionEvent actionEvent) throws IOException {
-        loadNextScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+        loadScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
     }
 
     public void goNextToHardSkillsSceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -131,7 +131,7 @@ public class EmploymentHistorySceneController extends SceneControllerTemplate {
         } catch (ParseException e) {
             new StorageWriteErrorAlert();
         }
-        loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
+        loadScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
     }
 
     public void goLoadDataEmploymentHistoryScene(ActionEvent actionEvent) {

@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.DesignerSceneController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="924.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pickles.cvdesigner.controllers.DesignerSceneController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -84,10 +84,10 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #ffff;" VBox.vgrow="ALWAYS">
       <children>
-            <Button fx:id="backToOtherInfo" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackToOtherInfoButton" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
-            <Button fx:id="nextButton" layoutX="810.0" layoutY="526.0" mnemonicParsing="false" onAction="#goNext" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Next" />
-            <Button fx:id="loadDataButton" layoutX="782.0" layoutY="14.0" mnemonicParsing="false" onAction="#goLoadData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Load data" />
-            <WebView fx:id="designerWebView" layoutX="17.0" layoutY="57.0" prefHeight="462.0" prefWidth="865.0" />
+            <Button fx:id="backToOtherInfo" layoutX="14.0" layoutY="845.0" mnemonicParsing="false" onAction="#goBackToOtherInfoButton" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Back" />
+            <Button fx:id="nextButton" layoutX="513.0" layoutY="845.0" mnemonicParsing="false" onAction="#goNext" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff; -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="PDF" />
+            <Button fx:id="loadDataButton" layoutX="246.0" layoutY="845.0" mnemonicParsing="false" onAction="#goLoadData" style="-fx-background-color: #004AAD; -fx-text-fill: #ffff;                     -fx-font-weight: 700; -fx-background-radius: 10px; -fx-padding: 9 24;" text="Load data" />
+            <WebView fx:id="designerWebView" layoutX="10.0" layoutY="14.0" prefHeight="813.0" prefWidth="575.0" />
       </children>
     </AnchorPane>
   </children>

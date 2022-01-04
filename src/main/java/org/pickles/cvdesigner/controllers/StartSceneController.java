@@ -12,7 +12,7 @@ public class StartSceneController extends SceneControllerTemplate {
 
     @FXML
     private void goStart(ActionEvent actionEvent) throws IOException, ParseException {
-        loadNextScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
+        loadScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
     }
 
     @Override

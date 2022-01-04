@@ -21,7 +21,6 @@ import org.pickles.cvdesigner.storage.EducationHistorySceneJsonStorage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class EducationHistorySceneController extends SceneControllerTemplate {
     public Label schoolNameLabel;
@@ -125,7 +124,7 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
     }
 
     public void goBackToBasicData2Scene(ActionEvent actionEvent) throws IOException {
-        loadNextScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
+        loadScene(SceneTitles.BASIC_DATA_2_SCENE_TITLE.value, ScenePaths.BASIC_DATA_2_SCENE.value);
     }
 
     public void goNextToEmploymentHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -134,7 +133,7 @@ public class EducationHistorySceneController extends SceneControllerTemplate {
         } catch (ParseException e) {
             new StorageWriteErrorAlert();
         }
-        loadNextScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
+        loadScene(SceneTitles.EMPLOYMENT_HISTORY_SCENE_TITLE.value, ScenePaths.EMPLOYMENT_SCENE.value);
     }
 
     public void goLoadDataEducationHistoryScene(ActionEvent actionEvent) {

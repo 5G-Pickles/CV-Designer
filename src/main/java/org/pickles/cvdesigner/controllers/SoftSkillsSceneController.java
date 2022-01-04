@@ -74,7 +74,7 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
     }
 
     public void goBackToHardSkillsScene(ActionEvent actionEvent) throws IOException {
-        loadNextScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
+        loadScene(SceneTitles.HARD_SKILLS_SCENE_TITLE.value, ScenePaths.HARD_SKILLS_SCENE.value);
     }
 
     public void goNextToOtherInfoSceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -83,7 +83,7 @@ public class SoftSkillsSceneController extends SceneControllerTemplate {
         } catch (ParseException e) {
             new StorageWriteErrorAlert();
         }
-        loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
+        loadScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
     }
 
     public void goLoadDataSoftSkillsScene(ActionEvent actionEvent) {
