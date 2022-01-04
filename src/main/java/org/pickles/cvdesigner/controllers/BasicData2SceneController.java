@@ -164,7 +164,7 @@ public class BasicData2SceneController extends SceneControllerTemplate {
     }
 
     public void goBackToBasicData1Scene(ActionEvent actionEvent) throws IOException {
-        loadNextScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
+        loadScene(SceneTitles.BASIC_DATA_1_SCENE_TITLE.value, ScenePaths.BASIC_DATA_1_SCENE.value);
     }
 
     public void goNextToEducationHistorySceneAndStoreData(ActionEvent actionEvent) throws IOException {
@@ -174,7 +174,7 @@ public class BasicData2SceneController extends SceneControllerTemplate {
             } catch (ParseException e) {
                 new StorageWriteErrorAlert();
             }
-            loadNextScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
+            loadScene(SceneTitles.EDUCATION_HISTORY_SCENE_TITLE.value, ScenePaths.EDUCATION_SCENE.value);
         } else {
             new InvalidInputErrorAlert().showAndWait();
         }

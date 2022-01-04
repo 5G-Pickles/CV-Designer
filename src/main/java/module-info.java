@@ -17,6 +17,7 @@ module org.pickles.cvdesigner {
     requires gson;
     requires java.sql;
     requires java.desktop;
+    requires jdk.httpserver;
 
     opens org.pickles.cvdesigner to javafx.fxml;
     exports org.pickles.cvdesigner;

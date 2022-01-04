@@ -1,7 +1,5 @@
 package org.pickles.cvdesigner.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,11 +15,15 @@ import static org.pickles.cvdesigner.Main.*;
 public abstract class SceneControllerTemplate {
     protected static JSONObject fromStorageData;
 
-    protected static void loadNextScene(String sceneTitle, String resourceName) throws IOException {
+    protected static void loadScene(String sceneTitle, String resourceName) throws IOException {
+        loadScene(sceneTitle, resourceName, SceneSizes.MAIN_WIDTH, SceneSizes.MAIN_HEIGHT);
+    }
+
+    protected static void loadScene(String sceneTitle, String resourceName, SceneSizes width, SceneSizes height) throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource(resourceName));
         scene = new Scene(fxmlLoader.load(),
-                SceneSizes.MAIN_WIDTH.value,
-                SceneSizes.MAIN_HEIGHT.value);
+                width.value,
+                height.value);
         mainStage.setTitle(sceneTitle);
         mainStage.setScene(scene);
         mainStage.setResizable(false);

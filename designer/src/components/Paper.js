@@ -10,23 +10,23 @@ class Paper extends React.PureComponent {
     static defaultProps = {
         isDraggable: true,
         isResizable: true,
-        rowHeight: 50,
+        rowHeight: 30,
         preventCollision: false,
         cols: 13,
         compactType: null,
     };
 
-    height = 18;
+    height = 17;
 
     state = {
         layout: [
             { x: 0, y: 0, w: 13, h: 3, i: "header" },
-            { x: 0, y: 2, w: 3, h: 16, i: "info" },
+            { x: 0, y: 2, w: 3, h: 15, i: "info" },
             { x: 3, y: 3, w: 10, h: 4, i: "education" },
             { x: 3, y: 7, w: 10, h: 4, i: "job" },
-            { x: 3, y: 11, w: 5, h: 8, i: "hard" },
-            { x: 8, y: 11, w: 5, h: 8, i: "soft" },
-            { x: 0, y: 19, w: 13, h: 1, i: "footer", static: true }
+            { x: 3, y: 11, w: 5, h: 7, i: "hard" },
+            { x: 8, y: 11, w: 5, h: 7, i: "soft" },
+            { x: 0, y: 18, w: 13, h: 2, i: "footer", static: true }
         ]
     };
 
@@ -48,6 +48,7 @@ class Paper extends React.PureComponent {
                     }}
                 >
                     {console.log(this.props.texts)}
+                    {console.log(this.state.layout)}
                     {this.state.layout.map((item) => (
                         <div key={item.i} data-grid={item}>
                             <GridElement data={this.props.texts[item.i]} type={item.i} />
