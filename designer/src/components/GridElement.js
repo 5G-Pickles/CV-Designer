@@ -27,7 +27,7 @@ const UnorderedList = (props) => {
             <ul>
                 {props.data.content.map((item) => (
                     <li key={sha256(item.title + item.content)}>
-                        <b>{item.title}</b> - {item.content}
+                        <b>{item.title}</b> {item.content.length !== 0 && " - " + item.content.toString()}
                     </li>
                 ))}
             </ul>

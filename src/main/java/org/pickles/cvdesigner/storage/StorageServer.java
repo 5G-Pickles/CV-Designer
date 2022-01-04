@@ -5,6 +5,8 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -18,7 +20,8 @@ public class StorageServer {
         if (!alreadyStarted) {
             HttpServer server = HttpServer.create(new InetSocketAddress(5000), 0);
             server.createContext("/", new MyHandler());
-            server.setExecutor(null); // creates a default executor
+            ExecutorService executors = Executors.newFixedThreadPool(20);
+            server.setExecutor(executors); // creates a default executor
             server.start();
             alreadyStarted = true;
         }
@@ -33,11 +36,10 @@ public class StorageServer {
         public void handle(HttpExchange t) throws IOException {
             String file = JsonStorageTemplate.getPathToStorage();
             String response = readFileAsString(file);
-            t.sendResponseHeaders(200, response.length());
+            t.sendResponseHeaders(200, response.getBytes().length);
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
         }
     }
-
 }

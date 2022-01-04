@@ -14,6 +14,7 @@ import org.pickles.cvdesigner.enums.SceneTitles;
 import org.pickles.cvdesigner.helpers.Styling;
 import org.pickles.cvdesigner.helpers.Validator;
 import org.pickles.cvdesigner.storage.OtherInfoSceneJsonStorage;
+import org.pickles.cvdesigner.storage.StorageServer;
 
 import java.io.*;
 import java.util.concurrent.Executors;
@@ -114,7 +115,7 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
         assert exitCode == 0;
     }
 
-    public void goNextToDesignerSceneAndStoreData(ActionEvent actionEvent) throws IOException, InterruptedException {
+    public void goNextToDesignerSceneAndStoreData(ActionEvent actionEvent) throws IOException {
         if (this.validateAll()) {
             try {
                 writeDataToJson();
@@ -123,6 +124,7 @@ public class OtherInfoSceneController extends SceneControllerTemplate {
             }
 
 //            serveReactBuild();
+//            StorageServer.startServer();
 
             loadScene(SceneTitles.DESIGNER_SCENE_TITLE.value, ScenePaths.DESIGNER_SCENE.value,
                     SceneSizes.WEB_VIEW_WIDTH, SceneSizes.WEB_VIEW_HEIGHT);

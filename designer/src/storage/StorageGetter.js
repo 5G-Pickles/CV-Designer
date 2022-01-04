@@ -197,14 +197,10 @@ const getInfoData = (data, prefix) => {
 const getDataFromStorage = () => {
     let data = require("../storage.json");
 
-    fetch("https://localhost:5000").then((res) => {
-        data = res.json();
-        return data;
-    }).then((json) => {
-        console.log(json)
-    }).catch((err) => {
-        console.log(err)
-    })
+    fetch("https://localhost:5000")
+        .then(res => (data = res.json()))
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
 
     const prefix = "org.pickles.cvdesigner.controllers.";
 
