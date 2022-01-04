@@ -1,0 +1,72 @@
+.footer__title {
+    text-align: center;
+}
+
+.footer__content {
+    text-align: center;
+}
+/*footer - end*/
+/*header - start*/
+.header__title {
+    text-align: center;
+}
+
+.header__content {
+    text-align: center;
+}
+/*header - end*/
+/*soft - start*/
+.soft__title {
+    text-align: center;
+}
+
+.soft__content {
+
+}
+/*soft - end*/
+/*hard - start*/
+.hard__title {
+    text-align: center;
+}
+
+.hard__content {
+
+}
+
+.hard__content h4 {
+    padding-left: 10px;
+    margin: auto;
+}
+/*hard - start*/
+/*info - start*/
+.info__title {
+    text-align: center;
+}
+
+.info__content {
+
+}
+
+.info__content h4, span {
+    padding: 0 10px 0 10px;
+    margin: auto;
+}
+/*info - end*/
+/*job - start*/
+.job__title {
+    text-align: center;
+}
+
+.job__content {
+
+}
+/*job - end*/
+/*education - start*/
+.education__title {
+    text-align: center;
+}
+
+.education__content {
+
+}
+/*education - end*/
