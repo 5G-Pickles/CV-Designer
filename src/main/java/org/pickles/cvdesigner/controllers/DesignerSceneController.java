@@ -1,19 +1,19 @@
 package org.pickles.cvdesigner.controllers;
 
+import com.sun.net.httpserver.HttpServer;
 import javafx.event.ActionEvent;
+import javafx.print.*;
 import javafx.scene.web.WebView;
 import org.json.simple.parser.ParseException;
 import org.pickles.cvdesigner.alerts.InvalidInputErrorAlert;
 import org.pickles.cvdesigner.alerts.StorageWriteErrorAlert;
-import org.pickles.cvdesigner.enums.InputType;
 import org.pickles.cvdesigner.enums.ScenePaths;
 import org.pickles.cvdesigner.enums.SceneTitles;
-import org.pickles.cvdesigner.helpers.Styling;
-import org.pickles.cvdesigner.helpers.Validator;
+import org.pickles.cvdesigner.storage.StorageServer;
 
 import java.io.IOException;
 
-import static org.pickles.cvdesigner.controllers.SceneControllerTemplate.loadNextScene;
+import static org.pickles.cvdesigner.controllers.SceneControllerTemplate.loadScene;
 
 public class DesignerSceneController {
     public WebView designerWebView;
@@ -33,17 +33,25 @@ public class DesignerSceneController {
             } catch (ParseException e) {
                 new StorageWriteErrorAlert();
             }
-            loadNextScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
+            loadScene(SceneTitles.OTHER_INFO_SCENE_TITLE.value, ScenePaths.OTHER_INFO_SCENE.value);
         } else {
             new InvalidInputErrorAlert().showAndWait();
         }
     }
 
     public void goNext(ActionEvent actionEvent) {
+        Printer printerToUse = Printer.getDefaultPrinter();
+        PrinterJob job = PrinterJob.createPrinterJob(printerToUse);
+        PageLayout pageLayout = printerToUse.createPageLayout(Paper.A4,
+                PageOrientation.PORTRAIT, 0, 0, 0, 0);
 
+        job.setPrinter(printerToUse);
+        job.printPage(pageLayout, designerWebView);
+        job.endJob();
     }
 
-    public void goLoadData(ActionEvent actionEvent) {
+    public void goLoadData(ActionEvent actionEvent) throws Exception {
+        StorageServer.startServer();
         designerWebView.getEngine().load("http://localhost:3000/");
     }
 }

@@ -195,7 +195,13 @@ const getInfoData = (data, prefix) => {
 }
 
 const getDataFromStorage = () => {
-    const data = require("../storage.json");
+    let data = require("../storage.json");
+
+    fetch("https://localhost:5000")
+        .then(res => (data = res.json()))
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
+
     const prefix = "org.pickles.cvdesigner.controllers.";
 
     const footerStr = "I hereby give consent for my personal data included in the application to be" +

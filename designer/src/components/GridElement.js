@@ -27,7 +27,7 @@ const UnorderedList = (props) => {
             <ul>
                 {props.data.content.map((item) => (
                     <li key={sha256(item.title + item.content)}>
-                        <b>{item.title}</b> - {item.content}
+                        <b>{item.title}</b> {item.content.length !== 0 && " - " + item.content.toString()}
                     </li>
                 ))}
             </ul>
@@ -58,10 +58,7 @@ const GridElement = (props) => {
                 <div className={props.type + "__content"}>
                     <h3 className={props.type}>Telephone: {props.data.content.telephone}</h3>
                     <h3 className={props.type}>
-                        Email:
-                        <a href={"mailto:" + props.data.content.email}>
-                            {props.data.content.email}
-                        </a>
+                        Email: {props.data.content.email}
                     </h3>
                 </div>
             </React.Fragment>;
