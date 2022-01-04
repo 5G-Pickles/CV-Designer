@@ -8,7 +8,7 @@
   transition-property: left, top;
   background: rgba(0, 132, 255, 0.473);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
+  font-size: x-small;
 }
 
 .react-grid-item span {
@@ -64,5 +64,5 @@
 
 .footer {
   padding: 10px;
-  font-size: x-small;
+  font-size: xx-small;
 }
