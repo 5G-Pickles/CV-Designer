@@ -6,6 +6,7 @@
 .footer__content {
     text-align: center;
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
 }
 /*footer - end*/
 /*header - start*/
@@ -16,6 +17,7 @@
 .header__content {
     text-align: center;
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
 }
 /*header - end*/
 /*soft - start*/
@@ -25,6 +27,12 @@
 
 .soft__content {
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
+}
+
+.soft__content h4 {
+    padding-left: 10px;
+    margin: auto;
 }
 /*soft - end*/
 /*hard - start*/
@@ -34,6 +42,7 @@
 
 .hard__content {
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
 }
 
 .hard__content h4 {
@@ -44,6 +53,11 @@
 /*info - start*/
 .info__title {
     text-align: center;
+}
+
+.info__content {
+    padding: 0 10px 0 10px;
+    word-wrap: break-word;
 }
 
 .info__content ul {
@@ -63,6 +77,7 @@
 
 .job__content {
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
 }
 /*job - end*/
 /*education - start*/
@@ -72,5 +87,6 @@
 
 .education__content {
     word-wrap: break-word;
+    padding: 0 10px 0 10px;
 }
 /*education - end*/
